@@ -9,7 +9,7 @@ namespace BookStore.Models
 {
     public class Bestilling
     {
-        [Key]
+        [Key]  
         [ScaffoldColumn(false)]
         public int BestillingsID { get; set; }
         [ScaffoldColumn(false)]
