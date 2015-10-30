@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminRepository.cs" />
+    <Compile Include="AdminRepositoryStub.cs" />
     <Compile Include="BokerContext.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
