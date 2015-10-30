@@ -50,8 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDAL.cs" />
     <Compile Include="BokerContext.cs" />
-    <Compile Include="Kunde.cs" />
+    <Compile Include="KundeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

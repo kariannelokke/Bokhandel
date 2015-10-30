@@ -35,6 +35,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Data.Services.Design" />
+    <Reference Include="System.Data.SqlXml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +52,9 @@
     <Compile Include="Bestilling.cs" />
     <Compile Include="BestillingsDetaljer.cs" />
     <Compile Include="Bok.cs" />
+    <Compile Include="dbKunde.cs" />
     <Compile Include="Forfatter.cs" />
+    <Compile Include="Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sjanger.cs" />
   </ItemGroup>
