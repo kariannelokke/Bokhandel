@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.theme.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-inverse  navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Butikk", "Index", "Bookstore")</li>
+                    <li>@Html.ActionLink("Ny kunde", "Registrer", "Kunde")</li>
+                    <li>@Html.ActionLink("Handlekurv", "Index", "Handlekurv")</li>
+                    @if (Session["KundeID"] != null)
+                    {
+                        <li>@Html.ActionLink("Min side", "VisEnKunde", "Kunde", new { id = Session["KundeID"] }, null)</li>
+                    }
+                    else
+                    {
+                        <lI>@Html.ActionLink("Logg inn", "index", "Kunde") </lI>
+                    }
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>
+                Nettbokhandel
+            </h1>
+            <h2>
+                Bøker på nettet
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p> &copy;@DateTime.Now.Year -HiOA Informasjonsteknologi <p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@model BookStore.Models.Bok
+
+@{
+    ViewBag.Title = "Detaljer";
+}
+
+<legend>@Model.Tittel</legend>
+
+<div>
+    <p>
+        <img src="~/Content/book.jpg" width="100px"/>
+    </p>
+    <p>
+        <em>Sjanger: </em>
+        @Model.Sjanger.Navn
+    </p>
+    <p>
+        <em>Forfatter: </em>
+        @Model.Forfatter.Navn
+    </p>
+    <p>
+        <em>Pris: </em>
+        @Model.Pris
+    </p>
+    <p class="button">
+        @Html.ActionLink("Legg i kurv", "LeggIKurv", "Handlekurv", new { id=Model.ISBN}, "")
+    </p>
+</div>
+
+<div>
+    @Html.ActionLink("Var det ikke denne du letet etter?", "Index")
+</div>

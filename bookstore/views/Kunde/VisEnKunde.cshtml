@@ -1,0 +1,59 @@
+﻿@model BookStore.Models.dbKunde
+
+@{
+    ViewBag.Title = "Min side";
+}
+
+
+    <h2>Min side</h2>
+
+    <div>
+        <h3>Dine opplysninger: </h3>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fornavn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fornavn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Etternavn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Etternavn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adresse)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adresse)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Poststed.Postnr)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Poststed.Postnr)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Poststed.Poststed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Poststed.Poststed)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Endre opplysninger", "EditKunde", new { id = Model.Id }) |
+        @Html.ActionLink("Se ordrehistorikk", "VisOrdre", new { id = Model.Id }) |
+        @Html.ActionLink("Logg ut", "loggUt", new { id = Model.Id })
+    </p>

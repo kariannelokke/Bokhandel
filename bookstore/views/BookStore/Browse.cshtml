@@ -1,0 +1,20 @@
+﻿@model BookStore.Models.Sjanger
+
+@{
+    ViewBag.Title = "Finn bøker";
+}
+
+<legend>@Model.Navn</legend>
+  
+    <ul class="list-inline">
+    @foreach (var bok in Model.Boker)
+    {
+        <li>
+            <a href="@Url.Action("Detaljer", new { id = bok.ISBN })">
+                <img src="~/Content/book.jpg" alt="Sample Image" width="100px" />
+                <span>@bok.Tittel av @bok.Forfatter.Navn</span>
+            </a>
+        </li>
+     }
+    </ul>
+

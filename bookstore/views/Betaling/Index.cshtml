@@ -1,0 +1,47 @@
+﻿@model BookStore.Models.Kunde
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Logg inn</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Epost)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Epost)
+                @Html.ValidationMessageFor(model => model.Epost)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Passord)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Passord)
+                @Html.ValidationMessageFor(model => model.Passord)
+            </div>
+
+            <p>
+                <input type="submit" value="Logg inn" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Ikke registrert? Registrer deg her.", "Registrer", "Kunde")
+    </div>
+</body>
+</html>

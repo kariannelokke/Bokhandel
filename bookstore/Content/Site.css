@@ -1,0 +1,56 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.navbar-brand
+{
+    color: #ffffff;
+}
+
+ul#menylinje
+{
+	float: right;
+}
+
+ul#menylinje li
+{
+	display: inline;
+}
+
+ul#menylinje li a
+{
+	border-left: 1px solid #8A8575;
+	padding: 10px;
+	margin-top: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: left;
+}
+
+ul#menylinje li:first-child a
+{
+	border: none;
+}
+
+ul#menylinje li a:hover
+{
+	color: lightblue;
+}
+
+h2{
+    color: lightblue !important;
+}

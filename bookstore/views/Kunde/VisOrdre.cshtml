@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BookStore.Models.Bestilling> 
+
+@{
+    ViewBag.Title = "VisOrdre";
+}
+
+<h2>Din ordrehistorikk: </h2>
+
+<div>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Kunde/visOrdreDetaljer?id=@item.BestillingsID.ToString()">Bestillingsnummer: @item.BestillingsID.ToString() , @item.BestillingsDato</a></li>
+         }
+    </ul>
+  
+</div>
+<div>
+    @Html.ActionLink("Tilbake", "visEnKunde", new { id = Session["KundeID"] })
+
+</div>

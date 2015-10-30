@@ -1,0 +1,40 @@
+﻿@model BookStore.Models.Bestilling
+@{
+    ViewBag.Title = "Kvittering";
+}
+
+<h2>Takk for din bestilling</h2>
+<p>Ditt ordrenummer er: @Model.BestillingsID</p>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BestillingsDato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BestillingsDato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KundeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KundeId)
+        </dd>
+    </dl>
+    Bøker som er bestilt:
+    <ul>
+        
+        @foreach (var bok in Model.BestillingsDetaljer)
+        {
+            <li>
+                @bok.Bok.Tittel av @bok.Bok.Forfatter.Navn
+            </li>
+        }
+    </ul>
+</div>
+<div>
+    @Html.ActionLink("Tilbake", "Index", "Home")
+
+</div>
