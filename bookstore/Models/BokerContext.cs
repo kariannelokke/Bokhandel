@@ -11,7 +11,7 @@ namespace BookStore.Models
         public BokerContext() : base("name=Boker")
         {
             Database.CreateIfNotExists();
-            Database.SetInitializer<KundeContext>(null);
+            Database.SetInitializer<BokerContext>(null);
         }
 
         public DbSet<Bok> Boker { get; set; }
