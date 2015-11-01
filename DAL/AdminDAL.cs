@@ -9,11 +9,11 @@ namespace BookStore.DAL
 {
     public class AdminDAL
     {
-        public List<dbKunde> hentAlle()
+        public List<Model.dbKunde> hentAlle()
         {
             var db = new KundeContext();
            
-            List<dbKunde> alleKunder = db.Kunder.Select(k => new dbKunde()
+            List<Model.dbKunde> alleKunder = db.Kunder.Select(k => new Model.dbKunde()
             {
                 Id = k.Id,
                 Fornavn = k.Fornavn,

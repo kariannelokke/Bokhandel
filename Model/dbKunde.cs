@@ -14,14 +14,10 @@ namespace BookStore.Model
         public string Epost { get; set; }
         [ScaffoldColumn(false)]
         public byte[] Passord { get; set; }
-
         [Required(ErrorMessage = "Fornavn må oppgis")]
-
         [StringLength(50)]
         public string Fornavn { get; set; }
-
         [Required(ErrorMessage = "Etternavn må oppgis")]
-
         [StringLength(50)]
         public string Etternavn { get; set; }
 

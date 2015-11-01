@@ -12,20 +12,14 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model[0].fornavn)
+                @Html.DisplayNameFor(model => model[0].Fornavn)
                 <!-- NB: dette er endret fra generert kode da den forventer en IEnumerable som modell -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].etternavn)
+                @Html.DisplayNameFor(model => model[0].Etternavn)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].adresse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].postnr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model[0].poststed)
+                @Html.DisplayNameFor(model => model[0].Adresse)
             </th>
             <th></th>
         </tr>
@@ -34,29 +28,18 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.fornavn)
+                    @Html.DisplayFor(modelItem => item.Fornavn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.etternavn)
+                    @Html.DisplayFor(modelItem => item.Etternavn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.adresse)
+                    @Html.DisplayFor(modelItem => item.Adresse)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.postnr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.poststed)
-                </td>
-                <td>
-                    @Html.ActionLink("Endre", "Endre", new { id = item.id }, new { @class = "btn btn-success" })
-                    @Html.ActionLink("Detalj", "Detaljer", new { id = item.id }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Slette", "Slett", new { id = item.id }, new { @class = "btn btn-danger" })
-                </td>
+        
             </tr>
         }
 
     </table>
-    @Html.ActionLink("Registrer", "Registrer", new { tom = "" }, new { @class = "btn btn-success" })
 </body>
 </html>
