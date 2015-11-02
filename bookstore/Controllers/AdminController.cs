@@ -35,12 +35,31 @@ namespace BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var kundeDb = new AdminBLL();
-                bool endringOK = kundeDb.endreKunde(id, endreKunde);
+                var Admin = new AdminBLL();
+                bool endringOK = Admin.endreKunde(id, endreKunde);
                 if (endringOK)
                 {
                     return RedirectToAction("Liste");
                 }
+            }
+            return View();
+        }
+
+        public ActionResult Slett(int id)
+        {
+            var Admin = new AdminBLL();
+            Kunde enKunde = Admin.hentEnKunde(id);
+            return View(enKunde);
+        }
+
+        [HttpPost]
+        public ActionResult Slett(int id, Kunde slettKunde)
+        {
+            var Admin = new AdminBLL();
+            bool slettOK = Admin.slettKunde(id);
+            if (slettOK)
+            {
+                return RedirectToAction("Liste");
             }
             return View();
         }

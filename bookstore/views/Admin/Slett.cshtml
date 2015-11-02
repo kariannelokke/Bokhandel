@@ -1,0 +1,67 @@
+﻿@model BookStore.Model.Kunde
+
+@{
+    ViewBag.Title = "Slett";
+}
+
+<body>
+    <br /><br />
+    <h3>Er du sikker på at du vil slette denne?</h3>
+    <div>
+        <h4>Kunde</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fornavn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fornavn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.etternavn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.etternavn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adresse)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adresse)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.postnr)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.postnr)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.poststed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.poststed)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Slett" class="btn btn-danger" />
+                @Html.ActionLink("Kundeliste", "Liste", new { tom = "" }, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</body>
+

@@ -79,8 +79,8 @@ namespace BookStore.DAL
                     fornavn = enDbKunde.Fornavn,
                     etternavn = enDbKunde.Etternavn,
                     adresse = enDbKunde.Adresse,
-                    postnr = enDbKunde.Poststed.Poststed,
-                    poststed = enDbKunde.Poststed.Postnr
+                    postnr = enDbKunde.Poststed.Postnr,
+                    poststed = enDbKunde.Poststed.Poststed
                 };
                 return utKunde;
             }
