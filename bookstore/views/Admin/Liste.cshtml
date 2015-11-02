@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BookStore.Model.Kunde>
+
+@{
+    ViewBag.Title = "Liste";
+}
+
+<h2>Liste</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fornavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.etternavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adresse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postnr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poststed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fornavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.etternavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adresse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postnr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poststed)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "EndreKunde", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

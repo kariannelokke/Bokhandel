@@ -170,7 +170,8 @@
     <Content Include="Views\Kunde\VisOrdre.cshtml" />
     <Content Include="Views\Kunde\VisOrdreDetaljer.cshtml" />
     <Content Include="Views\Kunde\loggUt.cshtml" />
-    <Content Include="Views\Admin\ListeAvKunder.cshtml" />
+    <Content Include="Views\Admin\Liste.cshtml" />
+    <Content Include="Views\Admin\EndreKunde.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

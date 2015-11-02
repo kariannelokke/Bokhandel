@@ -19,8 +19,32 @@ namespace BookStore.Controllers
         public ActionResult Liste()
         {
             var adminDb = new AdminBLL();
-            List<Model.Kunde> alleKunder = adminDb.hentAlle();
+            List<Kunde> alleKunder = adminDb.hentAlle();
             return View(alleKunder);
         }
+
+        public ActionResult EndreKunde(int id)
+        {
+            var kundeDb = new AdminBLL();
+            Kunde enKunde = kundeDb.hentEnKunde(id);
+            return View(enKunde);
+        }
+
+        [HttpPost]
+        public ActionResult Endre(int id, Kunde endreKunde)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var kundeDb = new AdminBLL();
+                bool endringOK = kundeDb.endreKunde(id, endreKunde);
+                if (endringOK)
+                {
+                    return RedirectToAction("Liste");
+                }
+            }
+            return View();
+        }
+
     }
 }
