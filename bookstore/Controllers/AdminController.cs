@@ -64,5 +64,20 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult VisOrdre(int id)
+        {
+            var Admin = new AdminBLL();
+            List<Bestilling> ordre = Admin.hentAlleOrdre(id);
+            Session["KundId"] = id;
+            return View(ordre);
+        }
+
+        public ActionResult VisOrdreDetaljer(int id)
+        {
+            var Admin = new AdminBLL();
+            Bestilling ordreDetaljer = Admin.hentAlleOrdreDetaljer(id);
+            return View(ordreDetaljer);
+        }
+
     }
 }

@@ -9,10 +9,11 @@ namespace BookStore.DAL
 {
     public class AdminDAL
     {
-        public List<Model.Kunde> hentAlle()
+
+        public List<Kunde> hentAlle()
         {
             var db = new KundeContext();
-            List<Model.Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
+            List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
             {
                 id = k.Id,
                 fornavn = k.Fornavn,
@@ -20,7 +21,7 @@ namespace BookStore.DAL
                 adresse = k.Adresse,
                 postnr = k.Poststed.Postnr,
                 poststed = k.Poststed.Poststed
-               
+
             }).ToList();
 
             return alleKunder;
@@ -60,7 +61,7 @@ namespace BookStore.DAL
             kundeDatabase.SaveChanges();
             return true;
         }
-    
+
         public Kunde hentEnKunde(int id)
         {
             var db = new KundeContext();
@@ -102,5 +103,34 @@ namespace BookStore.DAL
             }
         }
 
+        public List<Bestilling> hentAlleOrdre(int id)
+        {
+            var kundeDatabase = new KundeContext();
+            var db = new BokerContext();
+
+            dbKunde kunde = kundeDatabase.Kunder.Find(id);
+
+            var kundesOrdre = db.Bestillinger.Include("BestillingsDetaljer").Where(b => b.KundeId == kunde.Epost).ToList();
+
+            return kundesOrdre;
+
+        }
+
+        public Bestilling hentAlleOrdreDetaljer(int id)
+        {
+            var db = new BokerContext();
+
+            Bestilling bestilling = db.Bestillinger.Find(id);
+            var bokerModel = db.Bestillinger.Include("BestillingsDetaljer").Single(g => g.BestillingsID == id);
+            if (bokerModel == null)
+            {
+                return null;
+            }
+            else
+            {
+                return bokerModel;
+            }
+
+        }
     }
 }

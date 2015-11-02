@@ -1,0 +1,50 @@
+﻿@model BookStore.Model.Bestilling
+
+@{
+    ViewBag.Title = "VisOrdreDetaljer";
+}
+
+<h2>VisOrdreDetaljer</h2>
+
+<body>
+    <h3>Ordrenummer @Model.BestillingsID</h3>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BestillingsDato)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BestillingsDato)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KundeId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KundeId)
+            </dd>
+        </dl>
+        Følgene bøker er bestilt:
+        <ul>
+            @if (Model.Total == 0)
+            {
+                <p>Ingen bøker er bestilt.</p>
+            }
+            else
+            {
+                foreach (var bok in Model.BestillingsDetaljer)
+                {
+                    <li>
+                        @bok.Bok.Tittel av @bok.Bok.Forfatter.Navn
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div>
+        @Html.ActionLink("Tilbake", "visOrdre", new { id = Session["KundId"]} )
+
+    </div>
