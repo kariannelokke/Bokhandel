@@ -79,5 +79,19 @@ namespace BookStore.Controllers
             return View(ordreDetaljer);
         }
 
+        public ActionResult visAlleBokerSjanger(string sjanger)
+        {
+            var Admin = new AdminBLL();
+            Sjanger boker = Admin.hentAlleBokerSjanger(sjanger);
+            return View(boker);
+        }
+
+        public ActionResult BokerIndex()
+        {
+            var Admin = new AdminBLL();
+            List<Sjanger> sjangere = Admin.hentAlleSjangere();
+            return View(sjangere);
+        }
+
     }
 }

@@ -1,0 +1,16 @@
+﻿@model List<BookStore.Model.Sjanger>
+@{
+    ViewBag.Title = "Butikk";
+}
+
+<legend>
+    Velg fra @Model.Count() sjangere:
+</legend>
+<ul>
+    @foreach (var sjanger in Model)
+    {
+        <li>@Html.ActionLink(sjanger.Navn, "visAlleBokerSjanger", new { sjanger = sjanger.Navn })</li>
+
+    }
+</ul>
+

@@ -47,5 +47,19 @@ namespace BookStore.BLL
             Bestilling ordrensDetaljer = AdminDal.hentAlleOrdreDetaljer(id);
             return ordrensDetaljer;
         }
+
+        public Sjanger hentAlleBokerSjanger(string sjanger)
+        {
+            var AdminDal = new AdminDAL();
+            Sjanger boker = AdminDal.hentAlleBokerSjanger(sjanger);
+            return boker;
+        }
+
+        public List<Sjanger> hentAlleSjangere()
+        {
+            var AdminDal = new AdminDAL();
+            List<Sjanger> sjangere = AdminDal.hentAlleSjangere();
+            return sjangere;
+        }
     }
 }
