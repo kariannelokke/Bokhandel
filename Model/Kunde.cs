@@ -9,7 +9,6 @@ namespace BookStore.Model
 {
     public class Kunde
     {
-        // dette er både en domenemodell og en view-modell
         public int id { get; set; }
 
         [Display(Name = "Fornavn")]

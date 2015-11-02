@@ -28,8 +28,9 @@ namespace BookStore.DAL
 
         public bool endreKunde(int id, Kunde innKunde)
         {
-             KundeContext kundeDatabase = new KundeContext();
+            KundeContext kundeDatabase = new KundeContext();
             var kundeSomSkalEndres = kundeDatabase.Kunder.FirstOrDefault(p => p.Id == innKunde.id);
+
             if (kundeSomSkalEndres == null)
                 return false;
 
@@ -40,6 +41,7 @@ namespace BookStore.DAL
             string innPostnr = innKunde.postnr;
 
             var funnetPostSted = kundeDatabase.Poststeder.FirstOrDefault(p => p.Postnr == innPostnr);
+
             if (funnetPostSted == null) // fant ikke poststed, må legge inn et nytt
             {
                 var nyttPoststed = new PostSted();

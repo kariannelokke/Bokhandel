@@ -52,7 +52,6 @@
     <Compile Include="Bestilling.cs" />
     <Compile Include="BestillingsDetaljer.cs" />
     <Compile Include="Bok.cs" />
-    <Compile Include="dbKunde.cs" />
     <Compile Include="Forfatter.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

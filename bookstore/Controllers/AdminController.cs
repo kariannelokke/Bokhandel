@@ -31,9 +31,8 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Endre(int id, Kunde endreKunde)
+        public ActionResult EndreKunde(int id, Kunde endreKunde)
         {
-
             if (ModelState.IsValid)
             {
                 var kundeDb = new AdminBLL();

@@ -52,8 +52,7 @@ namespace BookStore.DAL
 
     public class KundeContext : DbContext
     {
-        public KundeContext()
-        : base("name=Kunder")
+        public KundeContext() : base("name=Kunder")
         {
             Database.CreateIfNotExists();
             Database.SetInitializer<KundeContext>(null);
