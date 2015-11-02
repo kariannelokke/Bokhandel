@@ -9,19 +9,19 @@ namespace BookStore.DAL
 {
     public class AdminDAL
     {
-        public List<Model.dbKunde> hentAlle()
+        public List<Kunde> hentAlle()
         {
             var db = new KundeContext();
-           
-            List<Model.dbKunde> alleKunder = db.Kunder.Select(k => new Model.dbKunde()
+            List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
             {
-                Id = k.Id,
-                Fornavn = k.Fornavn,
-                Etternavn = k.Etternavn,
-                Adresse = k.Adresse
-            }
-            
-                ).ToList();
+                id = k.ID,
+                fornavn = k.Fornavn,
+                etternavn = k.Etternavn,
+                adresse = k.Adresse,
+                postnr = k.Postnr,
+                poststed = k.Poststeder.Poststed
+            }).ToList();
+
             return alleKunder;
         }
     }

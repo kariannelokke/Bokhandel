@@ -19,7 +19,7 @@ namespace BookStore.Controllers
         public ActionResult Liste()
         {
             var adminDb = new AdminBLL();
-            List<dbKunde> alleKunder = adminDb.hentAlle();
+            List<Model.Kunde> alleKunder = adminDb.hentAlle();
             return View(alleKunder);
         }
     }

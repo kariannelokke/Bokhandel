@@ -1,4 +1,4 @@
-﻿@model List<BookStore.Model.dbKunde>
+﻿@model List<BookStore.Model.Kunde>
 
 <!DOCTYPE html>
 
@@ -12,14 +12,20 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model[0].Fornavn)
+                @Html.DisplayNameFor(model => model[0].fornavn)
                 <!-- NB: dette er endret fra generert kode da den forventer en IEnumerable som modell -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].Etternavn)
+                @Html.DisplayNameFor(model => model[0].etternavn)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].Adresse)
+                @Html.DisplayNameFor(model => model[0].adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].postnr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].poststed)
             </th>
             <th></th>
         </tr>
@@ -28,18 +34,22 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Fornavn)
+                    @Html.DisplayFor(modelItem => item.fornavn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Etternavn)
+                    @Html.DisplayFor(modelItem => item.etternavn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Adresse)
+                    @Html.DisplayFor(modelItem => item.adresse)
                 </td>
-        
+                <td>
+                    @Html.DisplayFor(modelItem => item.postnr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.poststed)
+                </td>
             </tr>
         }
 
-    </table>
-</body>
+    </table></body>
 </html>

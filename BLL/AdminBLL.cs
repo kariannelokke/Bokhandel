@@ -10,10 +10,10 @@ namespace BookStore.BLL
 {
     public class AdminBLL
     {
-        public List<dbKunde> hentAlle()
+        public List<Kunde> hentAlle()
         {
             var AdminDAL = new AdminDAL();
-            List<dbKunde> alleKunder = AdminDAL.hentAlle();
+            List<Kunde> alleKunder = AdminDAL.hentAlle();
             return alleKunder;
         }
     }

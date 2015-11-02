@@ -10,23 +10,27 @@ namespace BookStore.Model
     public class dbKunde
     {
         [Key]
-        public int Id { get; set; }
-        public string Epost { get; set; }
-        [ScaffoldColumn(false)]
-        public byte[] Passord { get; set; }
+        public int id { get; set; }
+
+        [Display(Name = "Fornavn")]
         [Required(ErrorMessage = "Fornavn må oppgis")]
-        [StringLength(50)]
-        public string Fornavn { get; set; }
+        public string fornavn { get; set; }
+
+        [Display(Name = "Etternavn")]
         [Required(ErrorMessage = "Etternavn må oppgis")]
-        [StringLength(50)]
-        public string Etternavn { get; set; }
+        public string etternavn { get; set; }
 
-        [Required(ErrorMessage = "Adresse må oppgis")]
+        [Display(Name = "Adresse")]
+        [Required(ErrorMessage = "Adressen må oppgis")]
+        public string adresse { get; set; }
 
-        [StringLength(50)]
-        public string Adresse { get; set; }
+        [Display(Name = "Postnr")]
+        [Required(ErrorMessage = "Postnr må oppgis")]
+        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Postnr må være 4 siffer")]
+        public string postnr { get; set; }
 
-        [Required]
-        public virtual PostSted Poststed { get; set; }
+        [Display(Name = "Poststed")]
+        [Required(ErrorMessage = "Poststed må oppgis")]
+        public string poststed { get; set; }
     }
 }
