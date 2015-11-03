@@ -68,5 +68,24 @@ namespace BookStore.BLL
             Bok bok = AdminDal.hentBokDetaljer(id);
             return bok;
         }
+
+        public List<Boken> hentAlleBoker()
+        {
+            var AdminDal = new AdminDAL();
+            List<Boken> boker = AdminDal.hentAlleBoker();
+            return boker;
+        }
+
+        public bool endreBok(int id, Boken innBok)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.endreBok(id, innBok);
+        }
+
+        public Boken hentEnBok(int id)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.hentEnBok(id);
+        }
     }
 }

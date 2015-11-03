@@ -19,5 +19,6 @@ namespace BookStore.DAL
         public DbSet<Sjanger> Sjangere { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }
         public DbSet<BestillingsDetaljer> BestillingsDetaljerna { get; set; }
+        public DbSet<Forfatter> Forfattere { get; set; }
     }
 }

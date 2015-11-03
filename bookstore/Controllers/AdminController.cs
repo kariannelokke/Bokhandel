@@ -100,5 +100,35 @@ namespace BookStore.Controllers
             return View(bok);
         }
 
+        public ActionResult hentAlleBoker()
+        {
+            var Admin = new AdminBLL();
+            List<Boken> boker = Admin.hentAlleBoker();
+            return View(boker);
+
+        }
+    
+        public ActionResult EndreBok(int id)
+        {
+            var bokDb = new AdminBLL();
+            Boken enBok = bokDb.hentEnBok(id);
+            return View(enBok);
+        }
+
+        [HttpPost]
+        public ActionResult EndreBok(int id, Boken endreBok)
+        {
+            if (ModelState.IsValid)
+            {
+                var Admin = new AdminBLL();
+                bool endringOK = Admin.endreBok(id, endreBok);
+                if (endringOK)
+                {
+                    return RedirectToAction("hentAlleBoker");
+                }
+            }
+            return View();
+        }
+
     }
 }

@@ -4,9 +4,7 @@
     ViewBag.Title = "visAlleBokerSjanger";
 }
 
-<h2>visAlleBokerSjanger</h2>
-
-<legend>@Model.Navn</legend>
+<h2>Bøkene i @Model.Navn:</h2>
 
 <ul class="list-inline">
     @foreach (var bok in Model.Boker)

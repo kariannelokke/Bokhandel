@@ -152,5 +152,81 @@ namespace BookStore.DAL
             var bok = db.Boker.Find(id);
             return bok;
         }
+
+        public List<Boken> hentAlleBoker()
+        {
+            var db = new BokerContext();
+            List<Boken> alleBoker = db.Boker.Select(k => new Boken()
+            {
+                Tittel = k.Tittel,
+                Pris = k.Pris,
+                Sjanger = k.Sjanger.Navn,
+                ForfatterFornavn = k.Forfatter.Navn
+
+            }).ToList();
+
+            return alleBoker;
+        }
+
+        public bool endreBok(int id, Boken innBok)
+        {
+            BokerContext db = new BokerContext();
+            var bokSomSkalEndres = db.Boker.FirstOrDefault(p => p.ISBN == innBok.ISBN);
+
+            if (bokSomSkalEndres == null)
+                return false;
+
+            bokSomSkalEndres.Tittel = innBok.Tittel;
+            bokSomSkalEndres.Pris = innBok.Pris;
+
+            string forfatterFornavn = innBok.ForfatterFornavn;
+            string forfatterEtternavn = innBok.ForfatterEtternavn;
+            string navn = forfatterFornavn + " " + forfatterEtternavn;
+
+            var funnetForfatter = db.Forfattere.FirstOrDefault(p => p.Navn == navn );
+
+            if (funnetForfatter == null) // fant ikke forfatter, må legge inn
+            {
+                var nyForfatter = new Forfatter();
+                nyForfatter.Navn = navn;
+                db.Forfattere.Add(nyForfatter);
+                // det nye poststedet legges i den nye brukeren
+                bokSomSkalEndres.Forfatter = nyForfatter;
+
+            }
+            else
+            { // fant poststedet, legger det inn i den nye brukeren
+                bokSomSkalEndres.Forfatter = funnetForfatter;
+            }
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public Boken hentEnBok(int id)
+        {
+            var db = new BokerContext();
+
+            var enDbBok = db.Boker.Find(id);
+
+            if (enDbBok == null)
+            {
+                return null;
+            }
+            else
+            {
+                var utKunde = new Boken()
+                {
+                    ISBN = enDbBok.ISBN,
+                    Tittel = enDbBok.Tittel,
+                    Pris = enDbBok.Pris,
+                    Sjanger = enDbBok.Sjanger.ToString(),
+                    ForfatterFornavn = enDbBok.Forfatter.Navn
+
+                };
+                return utKunde;
+            }
+        }
+
     }
 }
