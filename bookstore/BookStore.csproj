@@ -180,6 +180,7 @@
     <Content Include="Views\Admin\bokDetaljer.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\hentAlleBoker.cshtml" />
+    <Content Include="Views\Admin\EndreBok.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

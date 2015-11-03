@@ -158,10 +158,11 @@ namespace BookStore.DAL
             var db = new BokerContext();
             List<Boken> alleBoker = db.Boker.Select(k => new Boken()
             {
+                ISBN = k.ISBN,
                 Tittel = k.Tittel,
                 Pris = k.Pris,
                 Sjanger = k.Sjanger.Navn,
-                ForfatterFornavn = k.Forfatter.Navn
+                Forfatter = k.Forfatter.Navn
 
             }).ToList();
 
@@ -179,16 +180,15 @@ namespace BookStore.DAL
             bokSomSkalEndres.Tittel = innBok.Tittel;
             bokSomSkalEndres.Pris = innBok.Pris;
 
-            string forfatterFornavn = innBok.ForfatterFornavn;
-            string forfatterEtternavn = innBok.ForfatterEtternavn;
-            string navn = forfatterFornavn + " " + forfatterEtternavn;
 
-            var funnetForfatter = db.Forfattere.FirstOrDefault(p => p.Navn == navn );
+            string forfatter = innBok.Forfatter;
+
+            var funnetForfatter = db.Forfattere.FirstOrDefault(p => p.Navn == forfatter );
 
             if (funnetForfatter == null) // fant ikke forfatter, må legge inn
             {
                 var nyForfatter = new Forfatter();
-                nyForfatter.Navn = navn;
+                nyForfatter.Navn = forfatter;
                 db.Forfattere.Add(nyForfatter);
                 // det nye poststedet legges i den nye brukeren
                 bokSomSkalEndres.Forfatter = nyForfatter;
@@ -215,16 +215,17 @@ namespace BookStore.DAL
             }
             else
             {
-                var utKunde = new Boken()
+                var utBok = new Boken()
                 {
                     ISBN = enDbBok.ISBN,
+                    ForfatterId = enDbBok.ForfatterId,
+                    SjangerId = enDbBok.SjangerId,
                     Tittel = enDbBok.Tittel,
                     Pris = enDbBok.Pris,
-                    Sjanger = enDbBok.Sjanger.ToString(),
-                    ForfatterFornavn = enDbBok.Forfatter.Navn
-
+                    Sjanger = enDbBok.Sjanger.Navn,
+                    Forfatter = enDbBok.Forfatter.Navn
                 };
-                return utKunde;
+                return utBok;
             }
         }
 

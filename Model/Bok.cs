@@ -22,7 +22,6 @@ namespace BookStore.Model
 
     public class Boken
     {
-        [Key]
         public int ISBN { get; set; }
         public int ForfatterId { get; set; }
         public int SjangerId { get; set; }
@@ -33,19 +32,15 @@ namespace BookStore.Model
 
         [Display(Name = "Pris")]
         [Required(ErrorMessage = "Pris må oppgis")]
-        [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "Pris må være et tall")]
+        [RegularExpression(@"^\d+.\d{0,2}$")]
         public decimal Pris { get; set; }
 
         [Display(Name = "Sjanger")]
         [Required(ErrorMessage = "Sjanger må oppgis")]
         public string Sjanger { get; set; }
 
-        [Display(Name = "Forfatter fornavn")]
-        [Required(ErrorMessage = "Forfatter fornavn må oppgis")]
-        public string ForfatterFornavn { get; set; }
-
-        [Display(Name = "Forfatter etternavn")]
-        [Required(ErrorMessage = "Forfatter etternavn må oppgis")]
-        public string ForfatterEtternavn { get; set; }
+        [Display(Name = "Forfatter")]
+        [Required(ErrorMessage = "Forfatter må oppgis")]
+        public string Forfatter { get; set; }
     }
 }
