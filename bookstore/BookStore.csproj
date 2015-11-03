@@ -178,6 +178,7 @@
     <Content Include="Views\Admin\visAlleBokerSjanger.cshtml" />
     <Content Include="Views\Admin\BokerIndex.cshtml" />
     <Content Include="Views\Admin\bokDetaljer.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

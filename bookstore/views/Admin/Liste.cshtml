@@ -4,7 +4,7 @@
     ViewBag.Title = "Liste";
 }
 
-<h2>Liste</h2>
+<h2>Liste over registrerte kunder</h2>
 
 <table class="table">
     <tr>
@@ -51,8 +51,8 @@
         </td>
         <td>
 
-            @Html.ActionLink("Endre", "EndreKunde", new { id=item.id }) |
-            @Html.ActionLink("Ordre", "VisOrdre", new { id=item.id }) |
+            @Html.ActionLink("Endre informasjon", "EndreKunde", new { id=item.id }) |
+            @Html.ActionLink("Vis ordre", "VisOrdre", new { id=item.id }) |
             @Html.ActionLink("Slett", "Slett", new { id=item.id })
         </td>
     </tr>

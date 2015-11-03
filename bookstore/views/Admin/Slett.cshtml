@@ -4,12 +4,10 @@
     ViewBag.Title = "Slett";
 }
 
-<body>
     <br /><br />
-    <h3>Er du sikker på at du vil slette denne?</h3>
+    <h3>Er du sikker på at du vil slette denne kunden?</h3>
+    <br/><br/>
     <div>
-        <h4>Kunde</h4>
-        <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.fornavn)
@@ -57,11 +55,9 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Slett" class="btn btn-danger" />
-                @Html.ActionLink("Kundeliste", "Liste", new { tom = "" }, new { @class = "btn btn-primary" })
+            <div>
+                <input type="submit" value="Slett" /> <br/>
+                @Html.ActionLink("Tilbake", "Liste")
             </div>
         }
     </div>
-</body>
-

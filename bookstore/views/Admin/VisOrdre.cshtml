@@ -4,13 +4,20 @@
     ViewBag.Title = "VisOrdre";
 }
 
-<h2>Din ordrehistorikk: </h2>
+<h2>Ordrehistorikk: </h2>
 
 <div>
     <ul>
-        @foreach (var item in Model)
+        @if (Model.Any())
         {
-            <li><a href="/Admin/visOrdreDetaljer?id=@item.BestillingsID.ToString()">Bestillingsnummer: @item.BestillingsID.ToString() , @item.BestillingsDato</a></li>
+            foreach (var item in Model)
+            {
+                <li><a href="/Admin/visOrdreDetaljer?id=@item.BestillingsID.ToString()">Bestillingsnummer: @item.BestillingsID.ToString() , @item.BestillingsDato</a></li>
+            }
+        }
+        else
+        {
+            <p>Ingen ordre</p>
         }
     </ul>
 
