@@ -130,5 +130,25 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult registrerBok()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult registrerBok(Boken innBok)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminDb = new AdminBLL();
+                bool insertOK = adminDb.settInnBok(innBok);
+                if (insertOK)
+                {
+                    return RedirectToAction("hentAlleBoker");
+                }
+            }
+            return View();
+        }
+
     }
 }

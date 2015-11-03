@@ -87,5 +87,11 @@ namespace BookStore.BLL
             var AdminDAL = new AdminDAL();
             return AdminDAL.hentEnBok(id);
         }
+
+        public bool settInnBok(Boken innBok)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.settInnBok(innBok);
+        }
     }
 }

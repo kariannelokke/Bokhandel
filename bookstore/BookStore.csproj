@@ -181,6 +181,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\hentAlleBoker.cshtml" />
     <Content Include="Views\Admin\EndreBok.cshtml" />
+    <Content Include="Views\Admin\registrerBok.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,7 +7,7 @@
 <h2>Alle bøker:</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Legg til en ny bok", "registrerBok")
 </p>
 <table class="table">
     <tr>
@@ -48,8 +48,8 @@
         </td>
         <td>
             @Html.ActionLink("Endre", "EndreBok", new { id=item.ISBN }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ISBN }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ISBN })
+            @Html.ActionLink("Detaljer", "bokDetaljer", new { id=item.ISBN }) |
+            @Html.ActionLink("Slett", "Delete", new { id=item.ISBN })
         </td>
     </tr>
 }

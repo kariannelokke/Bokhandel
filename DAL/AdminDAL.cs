@@ -190,14 +190,31 @@ namespace BookStore.DAL
                 var nyForfatter = new Forfatter();
                 nyForfatter.Navn = forfatter;
                 db.Forfattere.Add(nyForfatter);
-                // det nye poststedet legges i den nye brukeren
+           
                 bokSomSkalEndres.Forfatter = nyForfatter;
+            }
+            else
+            { 
+                bokSomSkalEndres.Forfatter = funnetForfatter;
+            }
 
+            string sjanger = innBok.Sjanger;
+
+            var funnetSjanger = db.Sjangere.FirstOrDefault(p => p.Navn == sjanger);
+
+            if (funnetSjanger == null) // fant ikke sjanger, må legge inn
+            {
+                var nySjanger = new Sjanger();
+                nySjanger.Navn = sjanger;
+                db.Sjangere.Add(nySjanger);
+               
+                bokSomSkalEndres.Sjanger = nySjanger;
             }
             else
             { // fant poststedet, legger det inn i den nye brukeren
-                bokSomSkalEndres.Forfatter = funnetForfatter;
+                bokSomSkalEndres.Sjanger = funnetSjanger;
             }
+
 
             db.SaveChanges();
             return true;
@@ -226,6 +243,62 @@ namespace BookStore.DAL
                     Forfatter = enDbBok.Forfatter.Navn
                 };
                 return utBok;
+            }
+        }
+
+        public bool settInnBok(Boken innBok)
+        {
+            var nyBok = new Bok()
+            {
+                ISBN = innBok.ISBN,
+                Tittel = innBok.Tittel,
+                Pris = innBok.Pris
+            };
+
+            var db = new BokerContext();
+            try
+            {
+                var eksistererForfatter = db.Forfattere.Find(innBok.ForfatterId);
+
+                if (eksistererForfatter == null)
+                {
+                    var nyForfatter = new Forfatter()
+                    {
+                        Navn = innBok.Forfatter
+                    };
+                    nyBok.Forfatter = nyForfatter;
+                    nyBok.ForfatterId = nyForfatter.ForfatterId;
+                }
+                else
+                {
+                    nyBok.Forfatter = eksistererForfatter;
+                    nyBok.ForfatterId = eksistererForfatter.ForfatterId;
+                }
+
+                var eksistererSjanger = db.Sjangere.Find(innBok.SjangerId);
+
+                if(eksistererSjanger == null)
+                {
+                    var nySjanger = new Sjanger()
+                    {
+                        Navn = innBok.Sjanger
+                    };
+                    nyBok.Sjanger = nySjanger;
+                    nyBok.SjangerId = nySjanger.SjangerId;
+                }
+                else
+                {
+                    nyBok.Sjanger = eksistererSjanger;
+                    nyBok.SjangerId = eksistererSjanger.SjangerId;
+                }
+
+                db.Boker.Add(nyBok);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
             }
         }
 
