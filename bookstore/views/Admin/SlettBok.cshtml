@@ -1,0 +1,63 @@
+﻿@model BookStore.Model.Boken
+
+@{
+    ViewBag.Title = "SlettBok";
+}
+
+<br /><br />
+<h3>Er du sikker på at du vil slette denne boken?</h3>
+<br /><br />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sjanger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sjanger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forfatter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forfatter)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <input type="submit" value="slettBok" /> <br />
+            @Html.ActionLink("Tilbake", "hentAlleBoker")
+        </div>
+    }
+</div>

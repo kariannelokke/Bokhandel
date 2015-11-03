@@ -93,5 +93,11 @@ namespace BookStore.BLL
             var AdminDAL = new AdminDAL();
             return AdminDAL.settInnBok(innBok);
         }
+
+        public bool slettBok(int slettId)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.slettBok(slettId);
+        }
     }
 }

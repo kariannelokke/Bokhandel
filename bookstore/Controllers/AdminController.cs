@@ -150,5 +150,24 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult SlettBok(int id)
+        {
+            var Admin = new AdminBLL();
+            Boken enBok = Admin.hentEnBok(id);
+            return View(enBok);
+        }
+
+        [HttpPost]
+        public ActionResult SlettBok(int id, Boken slettBok)
+        {
+            var Admin = new AdminBLL();
+            bool slettOK = Admin.slettBok(id);
+            if (slettOK)
+            {
+                return RedirectToAction("hentAlleBoker");
+            }
+            return View();
+        }
+
     }
 }

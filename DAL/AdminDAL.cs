@@ -183,18 +183,18 @@ namespace BookStore.DAL
 
             string forfatter = innBok.Forfatter;
 
-            var funnetForfatter = db.Forfattere.FirstOrDefault(p => p.Navn == forfatter );
+            var funnetForfatter = db.Forfattere.FirstOrDefault(p => p.Navn == forfatter);
 
             if (funnetForfatter == null) // fant ikke forfatter, må legge inn
             {
                 var nyForfatter = new Forfatter();
                 nyForfatter.Navn = forfatter;
                 db.Forfattere.Add(nyForfatter);
-           
+
                 bokSomSkalEndres.Forfatter = nyForfatter;
             }
             else
-            { 
+            {
                 bokSomSkalEndres.Forfatter = funnetForfatter;
             }
 
@@ -207,7 +207,7 @@ namespace BookStore.DAL
                 var nySjanger = new Sjanger();
                 nySjanger.Navn = sjanger;
                 db.Sjangere.Add(nySjanger);
-               
+
                 bokSomSkalEndres.Sjanger = nySjanger;
             }
             else
@@ -258,7 +258,7 @@ namespace BookStore.DAL
             var db = new BokerContext();
             try
             {
-                var eksistererForfatter = db.Forfattere.Find(innBok.ForfatterId);
+                var eksistererForfatter = db.Forfattere.FirstOrDefault(i => i.Navn == innBok.Forfatter);
 
                 if (eksistererForfatter == null)
                 {
@@ -275,9 +275,9 @@ namespace BookStore.DAL
                     nyBok.ForfatterId = eksistererForfatter.ForfatterId;
                 }
 
-                var eksistererSjanger = db.Sjangere.Find(innBok.SjangerId);
+                var eksistererSjanger = db.Sjangere.FirstOrDefault(i => i.Navn == innBok.Sjanger);
 
-                if(eksistererSjanger == null)
+                if (eksistererSjanger == null)
                 {
                     var nySjanger = new Sjanger()
                     {
@@ -302,5 +302,22 @@ namespace BookStore.DAL
             }
         }
 
+        public bool slettBok(int slettId)
+        {
+            var db = new BokerContext();
+            try
+            {
+                Bok slettBok = db.Boker.Find(slettId);
+                db.Boker.Remove(slettBok);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+
+
+        }
     }
 }
