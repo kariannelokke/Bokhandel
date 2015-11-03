@@ -80,6 +80,12 @@ namespace BookStore.BLL
             return AdminDAL.settInnBok(innBok);
         }
 
+        public bool settInnSjanger(Sjangeren innSjanger)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.settInnSjanger(innSjanger);
+        }
+
         public bool slettBok(int slettId)
         {
             var AdminDAL = new AdminDAL();

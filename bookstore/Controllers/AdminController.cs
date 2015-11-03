@@ -155,5 +155,25 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult registrerSjanger()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult registrerSjanger(Sjangeren innSjanger)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminDb = new AdminBLL();
+                bool insertOK = adminDb.settInnSjanger(innSjanger);
+                if (insertOK)
+                {
+                    return RedirectToAction("hentAlleBoker");
+                }
+            }
+            return View();
+        }
+
     }
 }

@@ -302,8 +302,26 @@ namespace BookStore.DAL
             {
                 return false;
             }
+        }
+        public bool settInnSjanger(Sjangeren innSjanger)
+        {
+            var nySjanger = new Sjanger()
+            {
+                Navn = innSjanger.Navn,
+   
+            };
 
-
+            var db = new BokerContext();
+            try
+            {
+                db.Sjangere.Add(nySjanger);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model
 {
@@ -9,7 +10,14 @@ namespace BookStore.Model
     {
         public int SjangerId { get; set; }
         public string Navn { get; set; }
-        public string Description { get; set; }
-        public List<Bok> Boker { get; set; }
     }
+
+    public class Sjangeren
+    {
+        public int SjangerId { get; set; }
+        [Display(Name = "Navn")]
+        [Required(ErrorMessage = "Navn på sjanger må oppgis")]
+        public string Navn { get; set; }
+    }
+
 }
