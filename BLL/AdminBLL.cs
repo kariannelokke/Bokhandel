@@ -61,5 +61,12 @@ namespace BookStore.BLL
             List<Sjanger> sjangere = AdminDal.hentAlleSjangere();
             return sjangere;
         }
+
+        public Bok hentBokDetaljer(int id)
+        {
+            var AdminDal = new AdminDAL();
+            Bok bok = AdminDal.hentBokDetaljer(id);
+            return bok;
+        }
     }
 }

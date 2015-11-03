@@ -145,5 +145,12 @@ namespace BookStore.DAL
             var sjangere = db.Sjangere.ToList();
             return sjangere;
         }
+
+        public Bok hentBokDetaljer(int id)
+        {
+            var db = new BokerContext();
+            var bok = db.Boker.Find(id);
+            return bok;
+        }
     }
 }

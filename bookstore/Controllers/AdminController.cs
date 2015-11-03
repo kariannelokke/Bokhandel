@@ -93,5 +93,12 @@ namespace BookStore.Controllers
             return View(sjangere);
         }
 
+        public ActionResult bokDetaljer(int id)
+        {
+            var Admin = new AdminBLL();
+            Bok bok = Admin.hentBokDetaljer(id);
+            return View(bok);
+        }
+
     }
 }
