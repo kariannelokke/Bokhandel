@@ -175,8 +175,6 @@
     <Content Include="Views\Admin\Slett.cshtml" />
     <Content Include="Views\Admin\VisOrdre.cshtml" />
     <Content Include="Views\Admin\VisOrdreDetaljer.cshtml" />
-    <Content Include="Views\Admin\visAlleBokerSjanger.cshtml" />
-    <Content Include="Views\Admin\BokerIndex.cshtml" />
     <Content Include="Views\Admin\bokDetaljer.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\hentAlleBoker.cshtml" />

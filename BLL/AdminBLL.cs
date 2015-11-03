@@ -48,20 +48,6 @@ namespace BookStore.BLL
             return ordrensDetaljer;
         }
 
-        public Sjanger hentAlleBokerSjanger(string sjanger)
-        {
-            var AdminDal = new AdminDAL();
-            Sjanger boker = AdminDal.hentAlleBokerSjanger(sjanger);
-            return boker;
-        }
-
-        public List<Sjanger> hentAlleSjangere()
-        {
-            var AdminDal = new AdminDAL();
-            List<Sjanger> sjangere = AdminDal.hentAlleSjangere();
-            return sjangere;
-        }
-
         public Bok hentBokDetaljer(int id)
         {
             var AdminDal = new AdminDAL();

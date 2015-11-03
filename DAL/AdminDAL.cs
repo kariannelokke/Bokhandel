@@ -132,20 +132,6 @@ namespace BookStore.DAL
             }
         }
 
-        public Sjanger hentAlleBokerSjanger(string sjanger)
-        {
-            var db = new BokerContext();
-            var sjangerModel = db.Sjangere.Include("Boker").Single(g => g.Navn == sjanger);
-            return sjangerModel;
-        }
-
-        public List<Sjanger> hentAlleSjangere()
-        {
-            var db = new BokerContext();
-            var sjangere = db.Sjangere.ToList();
-            return sjangere;
-        }
-
         public Bok hentBokDetaljer(int id)
         {
             var db = new BokerContext();
