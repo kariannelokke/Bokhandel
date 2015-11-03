@@ -132,13 +132,6 @@ namespace BookStore.DAL
             }
         }
 
-        public Bok hentBokDetaljer(int id)
-        {
-            var db = new BokerContext();
-            var bok = db.Boker.Find(id);
-            return bok;
-        }
-
         public List<Boken> hentAlleBoker()
         {
             var db = new BokerContext();
@@ -321,6 +314,123 @@ namespace BookStore.DAL
             catch (Exception feil)
             {
                 return false;
+            }
+        }
+
+        public List<Sjangeren> hentSjangere()
+        {
+            var db = new BokerContext();
+            List<Sjangeren> alleSjangere = db.Sjangere.Select(k => new Sjangeren()
+            {
+                SjangerId = k.SjangerId,
+                Navn = k.Navn
+
+            }).ToList();
+
+            return alleSjangere;
+        }
+
+        public bool endreSjanger(int id, Sjangeren innSjanger)
+        {
+            BokerContext db = new BokerContext();
+            var sjangerSomSkalEndres = db.Sjangere.FirstOrDefault(p => p.SjangerId == innSjanger.SjangerId);
+
+            if (sjangerSomSkalEndres == null)
+                return false;
+
+            sjangerSomSkalEndres.Navn = innSjanger.Navn;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public Sjangeren hentEnSjanger(int id)
+        {
+            var db = new BokerContext();
+
+            var enDbSjanger = db.Sjangere.Find(id);
+
+            if (enDbSjanger == null)
+            {
+                return null;
+            }
+            else
+            {
+                var utSjanger = new Sjangeren()
+                {
+                    SjangerId = enDbSjanger.SjangerId,
+                    Navn = enDbSjanger.Navn
+                };
+                return utSjanger;
+            }
+        }
+
+        public bool settInnForfatter(Forfatteren innForfatter)
+        {
+            var nyForfatter = new Forfatter()
+            {
+                Navn = innForfatter.Navn,
+
+            };
+
+            var db = new BokerContext();
+            try
+            {
+                db.Forfattere.Add(nyForfatter);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
+
+        public List<Forfatteren> hentForfattere()
+        {
+            var db = new BokerContext();
+            List<Forfatteren> alleSjangere = db.Forfattere.Select(k => new Forfatteren()
+            {
+                ForfatterId = k.ForfatterId,
+                Navn = k.Navn
+
+            }).ToList();
+
+            return alleSjangere;
+        }
+
+        public bool endreForfatter(int id, Forfatteren innForfatter)
+        {
+            BokerContext db = new BokerContext();
+            var forfatterSomSkalEndres = db.Forfattere.FirstOrDefault(p => p.ForfatterId == innForfatter.ForfatterId);
+
+            if (forfatterSomSkalEndres == null)
+                return false;
+
+            forfatterSomSkalEndres.Navn = innForfatter.Navn;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public Forfatteren hentEnForfatter(int id)
+        {
+            var db = new BokerContext();
+
+            var enDbForfatter = db.Forfattere.Find(id);
+
+            if (enDbForfatter == null)
+            {
+                return null;
+            }
+            else
+            {
+                var utForfatter = new Forfatteren()
+                {
+                    ForfatterId = enDbForfatter.ForfatterId,
+                    Navn = enDbForfatter.Navn
+                };
+                return utForfatter;
             }
         }
     }

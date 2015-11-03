@@ -79,13 +79,6 @@ namespace BookStore.Controllers
             return View(ordreDetaljer);
         }
 
-        public ActionResult bokDetaljer(int id)
-        {
-            var Admin = new AdminBLL();
-            Bok bok = Admin.hentBokDetaljer(id);
-            return View(bok);
-        }
-
         public ActionResult hentAlleBoker()
         {
             var Admin = new AdminBLL();
@@ -169,7 +162,85 @@ namespace BookStore.Controllers
                 bool insertOK = adminDb.settInnSjanger(innSjanger);
                 if (insertOK)
                 {
-                    return RedirectToAction("hentAlleBoker");
+                    return RedirectToAction("hentSjangere");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult hentSjangere()
+        {
+            var adminDb = new AdminBLL();
+            List<Sjangeren> alleSjangere = adminDb.hentSjangere();
+            return View(alleSjangere);
+        }
+
+        public ActionResult EndreSjanger(int id)
+        {
+            var Db = new AdminBLL();
+            Sjangeren enSjanger = Db.hentEnSjanger(id);
+            return View(enSjanger);
+        }
+
+        [HttpPost]
+        public ActionResult EndreSjanger(int id, Sjangeren endreSjanger)
+        {
+            if (ModelState.IsValid)
+            {
+                var Admin = new AdminBLL();
+                bool endringOK = Admin.endreSjanger(id, endreSjanger);
+                if (endringOK)
+                {
+                    return RedirectToAction("hentSjangere");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult registrerForfatter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult registrerForfatter(Forfatteren innForfatter)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminDb = new AdminBLL();
+                bool insertOK = adminDb.settInnForfatter(innForfatter);
+                if (insertOK)
+                {
+                    return RedirectToAction("hentForfattere");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult hentForfattere()
+        {
+            var adminDb = new AdminBLL();
+            List<Forfatteren> alleForfattere = adminDb.hentForfattere();
+            return View(alleForfattere);
+        }
+
+        public ActionResult EndreForfatter(int id)
+        {
+            var Db = new AdminBLL();
+            Forfatteren enForfatter = Db.hentEnForfatter(id);
+            return View(enForfatter);
+        }
+
+        [HttpPost]
+        public ActionResult EndreForfatter(int id, Forfatteren endreForfatter)
+        {
+            if (ModelState.IsValid)
+            {
+                var Admin = new AdminBLL();
+                bool endringOK = Admin.endreForfatter(id, endreForfatter);
+                if (endringOK)
+                {
+                    return RedirectToAction("hentForfattere");
                 }
             }
             return View();

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookStore.Model.Forfatteren>
+
+@{
+    ViewBag.Title = "hentForfattere";
+}
+
+<h2>Alle forfattere: </h2>
+
+<p>
+    @Html.ActionLink("Registrer ny forfatter", "registrerForfatter")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ForfatterId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Navn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForfatterId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Navn)
+        </td>
+        <td>
+            @Html.ActionLink("Endre", "EndreForfatter", new {  id=item.ForfatterId })
+        </td>
+    </tr>
+}
+
+</table>
+<p>@Html.ActionLink("Tilbake","hentAlleBoker")</p>

@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "hentAlleBoker";
 }
+<h3>
+    @Html.ActionLink("Se alle sjangere", "hentSjangere") |
+    @Html.ActionLink("Se alle forfattere", "hentForfattere")
+</h3>
 
 <h2>Alle bøker:</h2>
 
 <p>
-    @Html.ActionLink("Legg til en ny bok", "registrerBok") |
-    @Html.ActionLink("Legg til en ny sjanger", "registrerSjanger") |
-    @Html.ActionLink("Legg til en ny forfatter", "registrerForfatter")
+    @Html.ActionLink("Legg til en ny bok", "registrerBok")
 </p>
 <table class="table">
     <tr>
@@ -50,7 +52,6 @@
         </td>
         <td>
             @Html.ActionLink("Endre", "EndreBok", new { id=item.ISBN }) |
-            @Html.ActionLink("Detaljer", "bokDetaljer", new { id=item.ISBN }) |
             @Html.ActionLink("Slett", "slettBok", new { id=item.ISBN })
         </td>
     </tr>

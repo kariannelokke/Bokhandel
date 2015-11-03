@@ -48,13 +48,6 @@ namespace BookStore.BLL
             return ordrensDetaljer;
         }
 
-        public Bok hentBokDetaljer(int id)
-        {
-            var AdminDal = new AdminDAL();
-            Bok bok = AdminDal.hentBokDetaljer(id);
-            return bok;
-        }
-
         public List<Boken> hentAlleBoker()
         {
             var AdminDal = new AdminDAL();
@@ -91,5 +84,48 @@ namespace BookStore.BLL
             var AdminDAL = new AdminDAL();
             return AdminDAL.slettBok(slettId);
         }
+        public List<Sjangeren> hentSjangere()
+        {
+            var AdminDAL = new AdminDAL();
+            List<Sjangeren> alleSjangere = AdminDAL.hentSjangere();
+            return alleSjangere;
+        }
+
+        public bool endreSjanger(int id, Sjangeren innSjanger)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.endreSjanger(id, innSjanger);
+        }
+
+        public Sjangeren hentEnSjanger(int id)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.hentEnSjanger(id);
+        }
+        public bool settInnForfatter(Forfatteren innForfatter)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.settInnForfatter(innForfatter);
+        }
+
+        public List<Forfatteren> hentForfattere()
+        {
+            var AdminDAL = new AdminDAL();
+            List<Forfatteren> alleForfattere = AdminDAL.hentForfattere();
+            return alleForfattere;
+        }
+
+        public bool endreForfatter(int id, Forfatteren innForfatter)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.endreForfatter(id, innForfatter);
+        }
+
+        public Forfatteren hentEnForfatter(int id)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.hentEnForfatter(id);
+        }
+
     }
 }

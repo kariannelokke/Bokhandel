@@ -1,18 +1,20 @@
-﻿@model BookStore.Model.Sjanger
+﻿@model BookStore.Model.Forfatteren
 
 @{
-    ViewBag.Title = "egistrer ny sjanger";
+    ViewBag.Title = "EndreForfatter";
 }
 
-<h2>Registrer en ny sjanger: </h2>
+<h2>Endre forfatter: </h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>Forfatteren</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ForfatterId)
         <div class="form-group">
             @Html.LabelFor(model => model.Navn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -30,6 +32,5 @@
 }
 
 <div>
-    @Html.ActionLink("Vis alle sjangere", "visSjangere")
-    @Html.ActionLink("Tilbake", "hentAlleBokene")
+    @Html.ActionLink("Tilbake", "hentForfattere")
 </div>

@@ -175,13 +175,17 @@
     <Content Include="Views\Admin\Slett.cshtml" />
     <Content Include="Views\Admin\VisOrdre.cshtml" />
     <Content Include="Views\Admin\VisOrdreDetaljer.cshtml" />
-    <Content Include="Views\Admin\bokDetaljer.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\hentAlleBoker.cshtml" />
     <Content Include="Views\Admin\EndreBok.cshtml" />
     <Content Include="Views\Admin\registrerBok.cshtml" />
     <Content Include="Views\Admin\SlettBok.cshtml" />
     <Content Include="Views\Admin\registrerSjanger.cshtml" />
+    <Content Include="Views\Admin\hentSjangere.cshtml" />
+    <Content Include="Views\Admin\EndreSjanger.cshtml" />
+    <Content Include="Views\Admin\registrerForfatter.cshtml" />
+    <Content Include="Views\Admin\hentForfattere.cshtml" />
+    <Content Include="Views\Admin\EndreForfatter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
