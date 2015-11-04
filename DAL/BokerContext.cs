@@ -20,6 +20,6 @@ namespace BookStore.DAL
         public DbSet<Bestilling> Bestillinger { get; set; }
         public DbSet<BestillingsDetaljer> BestillingsDetaljerna { get; set; }
         public DbSet<Forfatter> Forfattere { get; set; }
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<dbAdmin> Admins { get; set; }
     }
 }
