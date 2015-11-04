@@ -9,7 +9,7 @@ namespace BookStore.DAL
 {
     public class BokerContext : DbContext
     {
-        public BokerContext() : base("name=Bokene")
+        public BokerContext() : base("name=Boker")
         {
             Database.CreateIfNotExists();
             Database.SetInitializer<BokerContext>(null);
@@ -20,6 +20,7 @@ namespace BookStore.DAL
         public DbSet<Bestilling> Bestillinger { get; set; }
         public DbSet<BestillingsDetaljer> BestillingsDetaljerna { get; set; }
         public DbSet<Forfatter> Forfattere { get; set; }
+        public DbSet<Administrator> Administratorer { get; set; }
 
     }
 }

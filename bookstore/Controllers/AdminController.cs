@@ -10,16 +10,42 @@ namespace BookStore.Controllers
 {
     public class AdminController : Controller
     {
-       public ActionResult Index()
+        public ActionResult Index()
         {
+            if (Session["AdminLoggetInn"] == null)
+            {
+                Session["AdminLoggetInn"] = false;
+                
+            }
+  
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Administratoren innAdmin)
+        {
+            AdminBLL AdminBLL = new AdminBLL();
+            Administrator admin = new Administrator();
+            admin = AdminBLL.Bruker_i_DB(innAdmin);
+            if (admin != null)
+            {
+                Session["AdminLoggetInn"] = true;
+                Session["AdminID"] = admin.Id;
+            
+                return RedirectToAction("adminSide");
+            }
+            else
+            {
+                Session["AdminLoggetInn"] = false;
+                return View();
+            }
         }
 
         public ActionResult adminSide()
         {
-            if (Session["AdminLoggInn"] != null)
+            if (Session["AdminLoggetInn"] != null)
             {
-                bool loggetInn = (bool)Session["AdminLoggInn"];
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
                 int adminID = (int)Session["AdminID"];
 
                 if (Session["AdminID"] != null)
@@ -31,6 +57,26 @@ namespace BookStore.Controllers
                 }
             }  
             return RedirectToAction("Index");       
+        }
+
+        public ActionResult registrerAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult registrerAdmin(Administratoren innAdmin)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminDb = new AdminBLL();
+                bool insertOK = adminDb.settInnAdmin(innAdmin);
+                if (insertOK)
+                {
+                    return RedirectToAction("hentAlleBoker");
+                }
+            }
+            return View();
         }
 
         public ActionResult loggUt()

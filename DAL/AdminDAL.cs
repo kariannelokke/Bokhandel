@@ -4,11 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookStore.Model;
+using System.Data.Entity;
+using System.Data.SqlTypes;
 
 namespace BookStore.DAL
 {
     public class AdminDAL
     {
+        public bool settInnAdmin(Administratoren innAdmin)
+        {
+            byte[] passordDb = lagHash(innAdmin.Passord);
+            var nyAdmin = new Administrator()
+            {
+                Id = innAdmin.Id,
+                Brukernavn = innAdmin.Brukernavn,
+                Passord = passordDb
+            };
+
+            var db = new BokerContext();
+            try
+            {
+                //db.Entry(nyAdmin).State = nyAdmin.Id == 0 ? EntityState.Added : EntityState.Modified;
+                db.Administratorer.Add(nyAdmin);        
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
+
+        private static byte[] lagHash(string innPassord)
+        {
+            byte[] innData, utData;
+            var algoritme = System.Security.Cryptography.SHA256.Create();
+            innData = System.Text.Encoding.ASCII.GetBytes(innPassord);
+            utData = algoritme.ComputeHash(innData);
+            return utData;
+        }
+
+        public Administrator Bruker_i_DB(Administratoren innBruker)
+        {
+            using (var db = new BokerContext())
+            {
+                byte[] passordDb = lagHash(innBruker.Passord);
+                Administrator funnetBruker = db.Administratorer.FirstOrDefault(b => b.Passord == passordDb && b.Brukernavn == innBruker.Brukernavn);
+                if (funnetBruker == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return funnetBruker;
+                }
+            }
+        }
 
         public List<Kunde> hentAlle()
         {
