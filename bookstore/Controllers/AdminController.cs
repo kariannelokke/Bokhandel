@@ -65,6 +65,26 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult registrerAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult registrerAdmin(Admin innAdmin)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminDb = new AdminBLL();
+                bool insertOK = adminDb.settInnAdmin(innAdmin);
+                if (insertOK)
+                {
+                    return RedirectToAction("adminSide");
+                }
+            }
+            return View();
+        }
+
         public ActionResult Liste()
         {
             var adminDb = new AdminBLL();
