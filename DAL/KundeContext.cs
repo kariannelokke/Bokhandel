@@ -56,9 +56,11 @@ namespace BookStore.DAL
         {
             Database.CreateIfNotExists();
             Database.SetInitializer<KundeContext>(null);
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<KundeContext>());
         }
         public DbSet<dbKunde> Kunder { get; set; }
         public DbSet<PostSted> Poststeder { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

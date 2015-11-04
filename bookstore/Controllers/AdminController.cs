@@ -10,7 +10,7 @@ namespace BookStore.Controllers
 {
     public class AdminController : Controller
     {
-        public ActionResult Index()
+       public ActionResult Index()
         {
             if (Session["AdminLoggInn"] == null)
             {

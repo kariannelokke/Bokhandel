@@ -8,7 +8,7 @@ namespace BookStore.Models
 {
     public class BokerContext : DbContext
     {
-        public BokerContext() : base("name=Boker")
+        public BokerContext() : base("name=Bokene")
         {
             Database.CreateIfNotExists();
             Database.SetInitializer<BokerContext>(null);

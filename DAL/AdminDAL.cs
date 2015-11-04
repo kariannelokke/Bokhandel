@@ -9,7 +9,6 @@ namespace BookStore.DAL
 {
     public class AdminDAL
     {
-
         public bool settInnAdmin(Admin innAdmin)
         {
             byte[] passordDb = lagHash(innAdmin.Passord);
@@ -23,7 +22,7 @@ namespace BookStore.DAL
             var db = new BokerContext();
             try
             {
-                db.Adminer.Add(nyAdmin);
+                db.Admins.Add(nyAdmin);
                 db.SaveChanges();
                 return true;
             }
@@ -33,7 +32,7 @@ namespace BookStore.DAL
             }
         }
 
-        static byte[] lagHash(string innPassord)
+        private static byte[] lagHash(string innPassord)
         {
             byte[] innData, utData;
             var algoritme = System.Security.Cryptography.SHA256.Create();
@@ -47,7 +46,7 @@ namespace BookStore.DAL
             using (var db = new BokerContext())
             {
                 byte[] passordDb = lagHash(innAdmin.Passord);
-                dbAdmin funnetBruker = db.Adminer.FirstOrDefault(b => b.Passord == passordDb && b.Id == innAdmin.Id);
+                dbAdmin funnetBruker = db.Admins.FirstOrDefault(b => b.Passord == passordDb && b.Id == innAdmin.Id);
                 if (funnetBruker == null)
                 {
                     return null;

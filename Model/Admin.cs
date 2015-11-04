@@ -17,6 +17,7 @@ namespace BookStore.Model
 
     public class dbAdmin
     {
+        [Key]
         public int Id { get; set; }
         public string Brukernavn { get; set; }
         public byte[] Passord { get; set; }
