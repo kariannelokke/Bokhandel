@@ -12,31 +12,7 @@ namespace BookStore.Controllers
     {
        public ActionResult Index()
         {
-            if (Session["AdminLoggInn"] == null)
-            {
-                Session["AdminLoggInn"] = false;
-            }
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(Admin innAdmin)
-        {
-            var adminDb = new AdminBLL();
-
-            dbAdmin admin = new dbAdmin();
-            admin = adminDb.Bruker_i_DB(innAdmin);
-            if (admin != null)
-            {
-                Session["AdminLoggInn"] = true;
-                Session["AdminID"] = admin.Id;
-                return RedirectToAction("adminSide");
-            }
-            else
-            {
-                Session["AdminLoggInn"] = false;
-                return View();
-            }
         }
 
         public ActionResult adminSide()
@@ -62,26 +38,6 @@ namespace BookStore.Controllers
             Session["LoggetInn"] = false;
             Session["KundeID"] = null;
             Session["Kunde"] = null;
-            return View();
-        }
-
-        public ActionResult registrerAdmin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult registrerAdmin(Admin innAdmin)
-        {
-            if (ModelState.IsValid)
-            {
-                var adminDb = new AdminBLL();
-                bool insertOK = adminDb.settInnAdmin(innAdmin);
-                if (insertOK)
-                {
-                    return RedirectToAction("adminSide");
-                }
-            }
             return View();
         }
 

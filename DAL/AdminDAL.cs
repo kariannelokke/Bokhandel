@@ -9,54 +9,6 @@ namespace BookStore.DAL
 {
     public class AdminDAL
     {
-        public bool settInnAdmin(Admin innAdmin)
-        {
-            byte[] passordDb = lagHash(innAdmin.Passord);
-
-            var nyAdmin = new dbAdmin()
-            {
-                Brukernavn = innAdmin.Brukernavn,
-                Passord = passordDb
-            };
-
-            var db = new BokerContext();
-            try
-            {
-                db.Admins.Add(nyAdmin);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception feil)
-            {
-                return false;
-            }
-        }
-
-        private static byte[] lagHash(string innPassord)
-        {
-            byte[] innData, utData;
-            var algoritme = System.Security.Cryptography.SHA256.Create();
-            innData = System.Text.Encoding.ASCII.GetBytes(innPassord);
-            utData = algoritme.ComputeHash(innData);
-            return utData;
-        }
-
-        public static dbAdmin Bruker_i_DB(Admin innAdmin)
-        {
-            using (var db = new BokerContext())
-            {
-                byte[] passordDb = lagHash(innAdmin.Passord);
-                dbAdmin funnetBruker = db.Admins.FirstOrDefault(b => b.Passord == passordDb && b.Id == innAdmin.Id);
-                if (funnetBruker == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return funnetBruker;
-                }
-            }
-        }
 
         public List<Kunde> hentAlle()
         {

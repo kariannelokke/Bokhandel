@@ -10,18 +10,6 @@ namespace BookStore.BLL
 {
     public class AdminBLL
     {
-        public bool settInnAdmin(Admin innAdmin)
-        {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.settInnAdmin(innAdmin);
-        }
-        public dbAdmin Bruker_i_DB(Admin innAdmin)
-        {
-            var AdminDAL = new AdminDAL();
-            dbAdmin admin = AdminDAL.Bruker_i_DB(innAdmin);
-            return admin;
-        }
-
         public List<Kunde> hentAlle()
         {
             var AdminDAL = new AdminDAL();
