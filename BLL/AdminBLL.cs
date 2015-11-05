@@ -9,7 +9,7 @@ using BookStore.DAL;
 namespace BookStore.BLL
 {
     public class AdminBLL
-    {
+    { 
         public bool settInnAdmin(Administratoren innAdmin)
         {
             var AdminDAL = new AdminDAL();
