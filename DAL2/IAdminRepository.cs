@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using BookStore.Model;
 
-namespace BookStore.BLL
+namespace BookStore.DAL2
 {
-    public interface IAdminLogikk
+    public interface IAdminRepository
     {
         List<Kunde> hentAlle();
         bool endreKunde(int id, Kunde innKunde);
@@ -29,5 +29,7 @@ namespace BookStore.BLL
         Bestilling hentAlleOrdreDetaljer(int id);
         bool settInnAdmin(Administratoren innAdmin);
         Administrator Bruker_i_DB(Administratoren innBruker);
+
+
     }
 }

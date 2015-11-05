@@ -1,155 +1,152 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BookStore.Model;
-using BookStore.DAL;
+using BookStore.DAL2;
 
 namespace BookStore.BLL
 {
-    public class AdminBLL
-    { 
+    public class AdminBLL : BLL.IAdminLogikk
+    {
+        private IAdminRepository _repository;
+
+        public AdminBLL() // ikke test
+        {
+            _repository = new AdminRepository();
+        }
+
+        public AdminBLL(IAdminRepository stub) // test
+        {
+            _repository = stub;
+        }
+
         public bool settInnAdmin(Administratoren innAdmin)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.settInnAdmin(innAdmin);
+
+            return _repository.settInnAdmin(innAdmin);
         }
 
         public Administrator Bruker_i_DB(Administratoren innAdmin)
         {
-            var AdminDAL = new AdminDAL();
-            Administrator admin = AdminDAL.Bruker_i_DB(innAdmin);
+
+            Administrator admin = _repository.Bruker_i_DB(innAdmin);
             return admin;
         }
         public List<Kunde> hentAlle()
-        {
-            var AdminDAL = new AdminDAL();
-            List<Kunde> alleKunder = AdminDAL.hentAlle();
+        {     
+            List<Kunde> alleKunder = _repository.hentAlle();
             return alleKunder;
         }
         public bool endreKunde(int id, Kunde innKunde)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.endreKunde(id, innKunde);
+
+            return _repository.endreKunde(id, innKunde);
+        }
+        public Kunde hentEnKunde(int id)
+        {
+            return _repository.hentEnKunde(id);
         }
 
         public bool slettKunde(int slettId)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.slettKunde(slettId);
+            return _repository.slettKunde(slettId);
         }
 
-        public Kunde hentEnKunde(int id)
+        public bool slettBok(int slettId)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.hentEnKunde(id);
+            return _repository.slettBok(slettId);
         }
 
-        public List<Bestilling> hentAlleOrdre(int id)
+        public Boken hentEnBok(int id)
         {
-            var AdminDAL = new AdminDAL();
-            List<Bestilling> alleOrdre = AdminDAL.hentAlleOrdre(id);
-            return alleOrdre;
-        }
-
-        public Bestilling hentAlleOrdreDetaljer(int id)
-        {
-            var AdminDal = new AdminDAL();
-            Bestilling ordrensDetaljer = AdminDal.hentAlleOrdreDetaljer(id);
-            return ordrensDetaljer;
+            return _repository.hentEnBok(id);
         }
 
         public List<Boken> hentAlleBoker()
         {
-            var AdminDal = new AdminDAL();
-            List<Boken> boker = AdminDal.hentAlleBoker();
+            List<Boken> boker = _repository.hentAlleBoker();
             return boker;
         }
 
         public bool endreBok(int id, Boken innBok)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.endreBok(id, innBok);
-        }
-
-        public Boken hentEnBok(int id)
-        {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.hentEnBok(id);
+            return _repository.endreBok(id, innBok);
         }
 
         public bool settInnBok(Boken innBok)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.settInnBok(innBok);
+
+            return _repository.settInnBok(innBok);
         }
 
         public bool settInnSjanger(Sjangeren innSjanger)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.settInnSjanger(innSjanger);
+            return _repository.settInnSjanger(innSjanger);
         }
 
-        public bool slettBok(int slettId)
-        {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.slettBok(slettId);
-        }
         public List<Sjangeren> hentSjangere()
         {
-            var AdminDAL = new AdminDAL();
-            List<Sjangeren> alleSjangere = AdminDAL.hentSjangere();
+
+            List<Sjangeren> alleSjangere = _repository.hentSjangere();
             return alleSjangere;
         }
 
         public bool endreSjanger(int id, Sjangeren innSjanger)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.endreSjanger(id, innSjanger);
+
+            return _repository.endreSjanger(id, innSjanger);
         }
 
         public Sjangeren hentEnSjanger(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.hentEnSjanger(id);
+
+            return _repository.hentEnSjanger(id);
         }
 
         public bool slettSjanger(int slettId)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.slettSjanger(slettId);
+
+            return _repository.slettSjanger(slettId);
         }
+
 
         public bool settInnForfatter(Forfatteren innForfatter)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.settInnForfatter(innForfatter);
+
+            return _repository.settInnForfatter(innForfatter);
         }
 
         public List<Forfatteren> hentForfattere()
         {
-            var AdminDAL = new AdminDAL();
-            List<Forfatteren> alleForfattere = AdminDAL.hentForfattere();
+
+            List<Forfatteren> alleForfattere = _repository.hentForfattere();
             return alleForfattere;
         }
 
         public bool endreForfatter(int id, Forfatteren innForfatter)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.endreForfatter(id, innForfatter);
+
+            return _repository.endreForfatter(id, innForfatter);
         }
 
         public Forfatteren hentEnForfatter(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.hentEnForfatter(id);
-        }
 
+            return _repository.hentEnForfatter(id);
+        }
         public bool slettForfatter(int slettId)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.slettForfatter(slettId);
+            return _repository.slettForfatter(slettId);
+        }
+        public List<Bestilling> hentAlleOrdre(int id)
+        {
+            List<Bestilling> alleOrdre = _repository.hentAlleOrdre(id);
+            return alleOrdre;
+        }
+
+        public Bestilling hentAlleOrdreDetaljer(int id)
+        {
+            Bestilling ordrensDetaljer = _repository.hentAlleOrdreDetaljer(id);
+            return ordrensDetaljer;
         }
 
     }

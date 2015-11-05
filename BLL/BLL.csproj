@@ -45,14 +45,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{fff30c5e-d786-4216-94fd-f230be46439c}</Project>
-      <Name>DAL</Name>
+    <ProjectReference Include="..\DAL2\DAL2.csproj">
+      <Project>{e3395b7c-a844-40cb-99a6-32ea61b190d1}</Project>
+      <Name>DAL2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{0a00fc81-0ce9-430c-8fbd-880544622c42}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
