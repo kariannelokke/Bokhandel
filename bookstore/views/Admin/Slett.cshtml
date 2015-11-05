@@ -56,8 +56,8 @@
             @Html.AntiForgeryToken()
 
             <div>
-                <input type="submit" value="Slett" /> <br/>
-                @Html.ActionLink("Tilbake", "Liste")
+                <input type="submit" value="Slett" class="btn btn-warning" />
+                @Html.ActionLink("Tilbake", "Liste", new { tom = "" }, new { @class = "btn btn-primary" })
             </div>
         }
     </div>

@@ -4,14 +4,14 @@
     ViewBag.Title = "EndreKunde";
 }
 
-<h2>EndreKunde</h2>
+<h2>Endre kunden @Model.fornavn @Model.etternavn: </h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Kunde</h4>
+      
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
@@ -64,5 +64,5 @@
 }
 
 <div>
-    @Html.ActionLink("Tilbake til kundeliste", "Liste")
+    @Html.ActionLink("Tilbake", "Liste")
 </div>
