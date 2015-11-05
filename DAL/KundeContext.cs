@@ -7,9 +7,15 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using BookStore.Model;
+using System.Data.Objects;
+using TrackerEnabledDbContext.Common.Extensions;
+using TrackerEnabledDbContext.Common;
+using TrackerEnabledDbContext.Identity;
+using TrackerEnabledDbContext;
 
 namespace BookStore.DAL
 {
+    [TrackChanges]
     public class dbKunde
     {
         [Key]
@@ -50,8 +56,8 @@ namespace BookStore.DAL
         public string Poststed { get; set; }
     }
 
-    public class KundeContext : DbContext
-    {
+    public class KundeContext : TrackerContext
+    { 
         public KundeContext() : base("name=Kunder")
         {
             Database.CreateIfNotExists();
