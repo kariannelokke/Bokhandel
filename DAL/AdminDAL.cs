@@ -12,7 +12,7 @@ namespace BookStore.DAL
     public class AdminDAL
     {
         public bool settInnAdmin(Administratoren innAdmin)
-        {
+        { 
             byte[] passordDb = lagHash(innAdmin.Passord);
             var nyAdmin = new Administrator()
             {
