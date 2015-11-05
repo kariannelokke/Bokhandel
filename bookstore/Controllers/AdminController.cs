@@ -15,7 +15,6 @@ namespace BookStore.Controllers
             if (Session["AdminLoggetInn"] == null)
             {
                 Session["AdminLoggetInn"] = false;
-                
             }
   
             return View();

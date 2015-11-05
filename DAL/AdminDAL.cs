@@ -141,9 +141,11 @@ namespace BookStore.DAL
         public bool slettKunde(int slettId)
         {
             var db = new KundeContext();
+            var database = new BokerContext();
             try
             {
                 dbKunde slettKunde = db.Kunder.Find(slettId);
+                database.Bestillinger.RemoveRange(database.Bestillinger.Where(c => c.KundeId == slettKunde.Epost));
                 db.Kunder.Remove(slettKunde);
                 db.SaveChanges();
                 return true;
