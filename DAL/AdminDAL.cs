@@ -211,7 +211,7 @@ namespace BookStore.DAL
 
         public bool endreBok(int id, Boken innBok)
         {
-            BokerContext db = new BokerContext();
+            var db = new BokerContext();
             var bokSomSkalEndres = db.Boker.FirstOrDefault(p => p.ISBN == innBok.ISBN);
 
             if (bokSomSkalEndres == null)
@@ -254,10 +254,10 @@ namespace BookStore.DAL
             { // fant poststedet, legger det inn i den nye brukeren
                 bokSomSkalEndres.Sjanger = funnetSjanger;
             }
-
             
             db.SaveChanges();
             return true;
+
         }
 
         public Boken hentEnBok(int id)

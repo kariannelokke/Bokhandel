@@ -6,13 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model
 {
+    [TrackChanges]
     public class Sjanger
     {
         public int SjangerId { get; set; }
         public string Navn { get; set; }
     }
-
-    public class Sjangeren
+    
+     public class Sjangeren
     {
         public int SjangerId { get; set; }
         [Display(Name = "Navn")]

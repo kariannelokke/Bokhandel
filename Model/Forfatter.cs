@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model
 {
-
+    [TrackChanges]
     public class Forfatter
     {
         public int ForfatterId { get; set; }

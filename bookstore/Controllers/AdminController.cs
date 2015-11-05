@@ -207,19 +207,11 @@ namespace BookStore.Controllers
 
         public ActionResult EndreBok(int id)
         {
-            if (Session["AdminLoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["AdminLoggetInn"];
-                    
-                if (loggetInn)
-                {
+     
                     var bokDb = new AdminBLL();
                     Boken enBok = bokDb.hentEnBok(id);
                     return View(enBok);
-                }
-                
-            }
-            return RedirectToAction("Index");
+            
         }
 
         [HttpPost]
@@ -297,16 +289,9 @@ namespace BookStore.Controllers
 
         public ActionResult registrerSjanger()
         {
-            if (Session["AdminLoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["AdminLoggetInn"];
 
-                if (loggetInn)
-                {
                     return View();
-                }
-            }
-            return RedirectToAction("Index");
+        
         }
 
         [HttpPost]
@@ -326,34 +311,20 @@ namespace BookStore.Controllers
 
         public ActionResult hentSjangere()
         {
-            if (Session["AdminLoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["AdminLoggetInn"];
-
-                if (loggetInn)
-                {
+  
                     var adminDb = new AdminBLL();
                     List<Sjangeren> alleSjangere = adminDb.hentSjangere();
                     return View(alleSjangere);
-                }
-            }
-            return RedirectToAction("Index");
+      
         }
 
         public ActionResult EndreSjanger(int id)
         {
-            if (Session["AdminLoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["AdminLoggetInn"];
-
-                if (loggetInn)
-                {
+   
                     var Db = new AdminBLL();
                     Sjangeren enSjanger = Db.hentEnSjanger(id);
                     return View(enSjanger);
-                }
-            }
-            return RedirectToAction("Index");
+            
         }
 
         [HttpPost]

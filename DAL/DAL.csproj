@@ -75,7 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDAL.cs" />
-    <Compile Include="AdminContext.cs" />
+    <Compile Include="BokerContext.cs" />
     <Compile Include="KundeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,6 +8,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace BookStore.Models
 {
+    [TrackChanges]
     public class Bok
     {
         [Key]
