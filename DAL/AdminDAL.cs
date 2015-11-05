@@ -424,8 +424,7 @@ namespace BookStore.DAL
             var db = new BokerContext();
             try
             {
-                //Bok slettBok = db.Boker.Find(slettId);
-                Bok slettBok = new Bok();
+                Bok slettBok = db.Boker.Find(slettId);
                 db.Boker.Remove(slettBok);
                 db.SaveChanges();
                 return true;
