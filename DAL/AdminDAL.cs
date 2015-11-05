@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BookStore.Model;
 using System.Data.Entity;
 using System.Data.SqlTypes;
+using System.IO;
 
 namespace BookStore.DAL
 {
@@ -347,13 +348,16 @@ namespace BookStore.DAL
             var db = new BokerContext();
             try
             {
-                Bok slettBok = db.Boker.Find(slettId);
+                //Bok slettBok = db.Boker.Find(slettId);
+                Bok slettBok = new Bok();
                 db.Boker.Remove(slettBok);
                 db.SaveChanges();
                 return true;
             }
             catch (Exception feil)
             {
+                StreamWriter logg = new StreamWriter("C:\\logg.txt", true);
+                logg.WriteLine("Feil i SlettKunde");
                 return false;
             }
         }
