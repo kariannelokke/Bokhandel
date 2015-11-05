@@ -28,7 +28,8 @@
             @Html.DisplayFor(modelItem => item.Navn)
         </td>
         <td>
-            @Html.ActionLink("Endre", "EndreSjanger", new { id=item.SjangerId })
+            @Html.ActionLink("Endre", "EndreSjanger", new { id=item.SjangerId }) |
+            @Html.ActionLink("Slett", "slettSjanger", new { id = item.SjangerId })
         </td>
     </tr>
 }

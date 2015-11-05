@@ -1,20 +1,20 @@
-﻿@model BookStore.Model.Sjangeren
+﻿@model BookStore.Model.Forfatteren
 
 @{
-    ViewBag.Title = "SlettSjanger";
+    ViewBag.Title = "SlettForfatter";
 }
 
-<h2>Er du sikker på at du vil slette sjangeren og alle bøkene i den?</h2>
+<h2>Er du sikker på at du vil slette forfatteren og alle dens bøker?</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.SjangerId)
+            @Html.DisplayNameFor(model => model.ForfatterId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SjangerId)
+            @Html.DisplayFor(model => model.ForfatterId)
         </dd>
 
         <dt>
@@ -33,6 +33,6 @@
 
     <div>
         <input type="submit" value="Slett" /> <br />
-        @Html.ActionLink("Tilbake", "hentSjangere")
+        @Html.ActionLink("Tilbake", "hentForfattere")
     </div>
 }
