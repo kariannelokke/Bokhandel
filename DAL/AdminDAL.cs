@@ -145,7 +145,14 @@ namespace BookStore.DAL
             try
             {
                 dbKunde slettKunde = db.Kunder.Find(slettId);
-                database.Bestillinger.RemoveRange(database.Bestillinger.Where(c => c.KundeId == slettKunde.Epost));
+
+                var bestillinger = database.Bestillinger.Where(c => c.KundeId == slettKunde.Epost);
+
+                foreach (var u in bestillinger)
+                {
+                    database.Bestillinger.Remove(u);
+                }
+
                 db.Kunder.Remove(slettKunde);
                 db.SaveChanges();
                 return true;
@@ -418,6 +425,29 @@ namespace BookStore.DAL
             }
         }
 
+        public bool slettSjanger(int slettId)
+        {
+            var db = new BokerContext();
+            try
+            {
+                Sjanger slettSjanger = db.Sjangere.Find(slettId);
+                var boker = db.Boker.Where(c => c.Sjanger.SjangerId == slettSjanger.SjangerId);
+
+                foreach (var u in boker)
+                {
+                    db.Boker.Remove(u);
+                }
+
+                db.Sjangere.Remove(slettSjanger);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
+
         public bool settInnForfatter(Forfatteren innForfatter)
         {
             var nyForfatter = new Forfatter()
@@ -484,6 +514,30 @@ namespace BookStore.DAL
                     Navn = enDbForfatter.Navn
                 };
                 return utForfatter;
+            }
+        }
+
+        public bool slettForfatter(int slettId)
+        {
+            var db = new BokerContext();
+            try
+            {
+                Forfatter slettForfatter = db.Forfattere.Find(slettId);
+
+                var boker = db.Boker.Where(c => c.Forfatter.ForfatterId == slettForfatter.ForfatterId);
+
+                foreach(var u in boker)
+                {
+                    db.Boker.Remove(u);
+                }
+
+                db.Forfattere.Remove(slettForfatter);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
             }
         }
     }
