@@ -1,0 +1,39 @@
+﻿@model BookStore.Model.Sjangeren
+
+@{
+    ViewBag.Title = "SlettSjanger";
+}
+
+<h2>Er du sikker på at du vil slette sjangeren og alle bøkene i den?</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SjangerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SjangerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Navn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Navn)
+        </dd>
+
+    </dl>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <input type="submit" value="Slett" /> <br />
+        @Html.ActionLink("Se alle bøkene i Model.Navn", "bokerSjanger" )
+        @Html.ActionLink("Tilbake", "hentSjangere")
+    </div>
+}

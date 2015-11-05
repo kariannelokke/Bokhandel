@@ -114,6 +114,13 @@ namespace BookStore.BLL
             var AdminDAL = new AdminDAL();
             return AdminDAL.hentEnSjanger(id);
         }
+
+        public bool slettSjanger(int slettId)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.slettSjanger(slettId);
+        }
+
         public bool settInnForfatter(Forfatteren innForfatter)
         {
             var AdminDAL = new AdminDAL();
@@ -137,6 +144,12 @@ namespace BookStore.BLL
         {
             var AdminDAL = new AdminDAL();
             return AdminDAL.hentEnForfatter(id);
+        }
+
+        public bool slettForfatter(int slettId)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.slettForfatter(slettId);
         }
 
     }

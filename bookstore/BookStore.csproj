@@ -188,6 +188,7 @@
     <Content Include="Views\Admin\adminSide.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\registrerAdmin.cshtml" />
+    <Content Include="Views\Admin\SlettSjanger.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

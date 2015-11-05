@@ -15,8 +15,9 @@ namespace BookStore.Controllers
             if (Session["AdminLoggetInn"] == null)
             {
                 Session["AdminLoggetInn"] = false;
+
             }
-  
+
             return View();
         }
 
@@ -30,7 +31,7 @@ namespace BookStore.Controllers
             {
                 Session["AdminLoggetInn"] = true;
                 Session["AdminID"] = admin.Id;
-            
+
                 return RedirectToAction("adminSide");
             }
             else
@@ -54,8 +55,8 @@ namespace BookStore.Controllers
                         return View();
                     }
                 }
-            }  
-            return RedirectToAction("Index");       
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult registrerAdmin()
@@ -156,7 +157,7 @@ namespace BookStore.Controllers
             return View(boker);
 
         }
-    
+
         public ActionResult EndreBok(int id)
         {
             var bokDb = new AdminBLL();
@@ -267,6 +268,25 @@ namespace BookStore.Controllers
             return View();
         }
 
+        public ActionResult SlettSjanger(int id)
+        {
+            var Admin = new AdminBLL();
+            Sjangeren enKunde = Admin.hentEnSjanger(id);
+            return View(enKunde);
+        }
+
+        [HttpPost]
+        public ActionResult SlettSjanger(int id, Sjangeren slettSjanger)
+        {
+            var Admin = new AdminBLL();
+            bool slettOK = Admin.slettSjanger(id);
+            if (slettOK)
+            {
+                return RedirectToAction("hentSjangere");
+            }
+            return View();
+        }
+
         public ActionResult registrerForfatter()
         {
             return View();
@@ -312,6 +332,25 @@ namespace BookStore.Controllers
                 {
                     return RedirectToAction("hentForfattere");
                 }
+            }
+            return View();
+        }
+
+        public ActionResult SlettForfatter(int id)
+        {
+            var Admin = new AdminBLL();
+            Forfatteren enForfatter = Admin.hentEnForfatter(id);
+            return View(enForfatter);
+        }
+
+        [HttpPost]
+        public ActionResult SlettForfatter(int id, Forfatteren slettForfatter)
+        {
+            var Admin = new AdminBLL();
+            bool slettOK = Admin.slettForfatter(id);
+            if (slettOK)
+            {
+                return RedirectToAction("hentForfattere");
             }
             return View();
         }
