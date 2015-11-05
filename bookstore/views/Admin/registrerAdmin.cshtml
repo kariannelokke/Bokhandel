@@ -4,15 +4,14 @@
     ViewBag.Title = "registrerAdmin";
 }
 
-<h2>registrerAdmin</h2>
+<h2>Registrere ny admin:</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Administratoren</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Brukernavn, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -32,12 +31,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Lagre" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tilbake", "adminSide")
 </div>

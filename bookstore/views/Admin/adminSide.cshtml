@@ -4,11 +4,13 @@
 
 <h2>Administrator</h2>
 
-<ul>
+<ul class="nav nav-pills" role="tablist">
     <li>@Html.ActionLink("Behandle registerte kunder", "Liste")</li>
     <li>@Html.ActionLink("Behandle bøker", "hentAlleBoker")</li>
+    <li>@Html.ActionLink("Registrer ny admin", "registrerAdmin")</li>
 </ul>
-
+<br/>
+<br/>
 <div>
     @Html.ActionLink("Logg ut", "loggutadmin")
 </div>

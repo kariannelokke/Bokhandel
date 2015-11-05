@@ -9,30 +9,32 @@
 <p>
     @Html.ActionLink("Legg til ny sjanger", "registrerSjanger")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover">
+    <tr class="info">
         <th>
             @Html.DisplayNameFor(model => model.SjangerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Navn)
         </th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SjangerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Navn)
-        </td>
-        <td>
-            @Html.ActionLink("Endre", "EndreSjanger", new { id=item.SjangerId }) |
-            @Html.ActionLink("Slett", "slettSjanger", new { id = item.SjangerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SjangerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Navn)
+            </td>
+            <td>
+                @Html.ActionLink("Endre", "EndreSjanger", new { id = item.SjangerId }) |
+                @Html.ActionLink("Slett", "slettSjanger", new { id = item.SjangerId })
+            </td>
+        </tr>
+    }
 </table>
 
 <p>
