@@ -153,6 +153,7 @@ namespace BookStore.DAL
                     database.Bestillinger.Remove(u);
                 }
 
+                database.SaveChanges();
                 db.Kunder.Remove(slettKunde);
                 db.SaveChanges();
                 return true;
