@@ -7,12 +7,12 @@ using BookStore.Model;
 
 namespace BookStore.DAL
 {
-    public class BokerContext : DbContext
+    public class AdminContext : DbContext
     {
-        public BokerContext() : base("name=Boker")
+        public AdminContext() : base("name=Boker")
         {
             Database.CreateIfNotExists();
-            Database.SetInitializer<BokerContext>(null);
+            Database.SetInitializer<AdminContext>(null);
         }
 
         public DbSet<Bok> Boker { get; set; }

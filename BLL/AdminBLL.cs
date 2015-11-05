@@ -146,11 +146,11 @@ namespace BookStore.BLL
             return AdminDAL.hentEnForfatter(id);
         }
 
-        /*public bool slettForfatter(int slettId)
+        public bool slettForfatter(int slettId)
         {
             var AdminDAL = new AdminDAL();
             return AdminDAL.slettForfatter(slettId);
-        }*/
+        }
 
     }
 }
