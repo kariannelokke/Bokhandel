@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using BookStore.Model;
+using TrackerEnabledDbContext;
 
 namespace BookStore.DAL
 {
-    public class AdminContext : DbContext
+    public class BokerContext : TrackerContext
     {
-        public AdminContext() : base("name=Boker")
+        public BokerContext() : base("name=Bok")
         {
             Database.CreateIfNotExists();
-            Database.SetInitializer<AdminContext>(null);
+            Database.SetInitializer<BokerContext>(null);
         }
 
         public DbSet<Bok> Boker { get; set; }

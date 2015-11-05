@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model
 {
+    
     public class Bestilling
     {
         [Key]  

@@ -21,7 +21,7 @@ namespace BookStore.DAL
                 Passord = passordDb
             };
 
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 //db.Entry(nyAdmin).State = nyAdmin.Id == 0 ? EntityState.Added : EntityState.Modified;
@@ -46,7 +46,7 @@ namespace BookStore.DAL
 
         public Administrator Bruker_i_DB(Administratoren innBruker)
         {
-            using (var db = new AdminContext())
+            using (var db = new BokerContext())
             {
                 byte[] passordDb = lagHash(innBruker.Passord);
                 Administrator funnetBruker = db.Administratorer.FirstOrDefault(b => b.Passord == passordDb && b.Brukernavn == innBruker.Brukernavn);
@@ -141,7 +141,7 @@ namespace BookStore.DAL
         public bool slettKunde(int slettId)
         {
             var db = new KundeContext();
-            var database = new AdminContext();
+            var database = new BokerContext();
             try
             {
                 dbKunde slettKunde = db.Kunder.Find(slettId);
@@ -167,7 +167,7 @@ namespace BookStore.DAL
         public List<Bestilling> hentAlleOrdre(int id)
         {
             var kundeDatabase = new KundeContext();
-            var db = new AdminContext();
+            var db = new BokerContext();
 
             dbKunde kunde = kundeDatabase.Kunder.Find(id);
 
@@ -179,7 +179,7 @@ namespace BookStore.DAL
 
         public Bestilling hentAlleOrdreDetaljer(int id)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
 
             Bestilling bestilling = db.Bestillinger.Find(id);
             var bokerModel = db.Bestillinger.Include("BestillingsDetaljer").Single(g => g.BestillingsID == id);
@@ -195,7 +195,7 @@ namespace BookStore.DAL
 
         public List<Boken> hentAlleBoker()
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             List<Boken> alleBoker = db.Boker.Select(k => new Boken()
             {
                 ISBN = k.ISBN,
@@ -211,7 +211,7 @@ namespace BookStore.DAL
 
         public bool endreBok(int id, Boken innBok)
         {
-            AdminContext db = new AdminContext();
+            BokerContext db = new BokerContext();
             var bokSomSkalEndres = db.Boker.FirstOrDefault(p => p.ISBN == innBok.ISBN);
 
             if (bokSomSkalEndres == null)
@@ -255,14 +255,14 @@ namespace BookStore.DAL
                 bokSomSkalEndres.Sjanger = funnetSjanger;
             }
 
-
+            
             db.SaveChanges();
             return true;
         }
 
         public Boken hentEnBok(int id)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
 
             var enDbBok = db.Boker.Find(id);
 
@@ -295,7 +295,7 @@ namespace BookStore.DAL
                 Pris = innBok.Pris
             };
 
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 var eksistererForfatter = db.Forfattere.FirstOrDefault(i => i.Navn == innBok.Forfatter);
@@ -344,7 +344,7 @@ namespace BookStore.DAL
 
         public bool slettBok(int slettId)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 Bok slettBok = db.Boker.Find(slettId);
@@ -365,7 +365,7 @@ namespace BookStore.DAL
    
             };
 
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 db.Sjangere.Add(nySjanger);
@@ -380,7 +380,7 @@ namespace BookStore.DAL
 
         public List<Sjangeren> hentSjangere()
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             List<Sjangeren> alleSjangere = db.Sjangere.Select(k => new Sjangeren()
             {
                 SjangerId = k.SjangerId,
@@ -393,7 +393,7 @@ namespace BookStore.DAL
 
         public bool endreSjanger(int id, Sjangeren innSjanger)
         {
-            AdminContext db = new AdminContext();
+            BokerContext db = new BokerContext();
             var sjangerSomSkalEndres = db.Sjangere.FirstOrDefault(p => p.SjangerId == innSjanger.SjangerId);
 
             if (sjangerSomSkalEndres == null)
@@ -407,7 +407,7 @@ namespace BookStore.DAL
 
         public Sjangeren hentEnSjanger(int id)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
 
             var enDbSjanger = db.Sjangere.Find(id);
 
@@ -428,7 +428,7 @@ namespace BookStore.DAL
 
         public bool slettSjanger(int slettId)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 Sjanger slettSjanger = db.Sjangere.Find(slettId);
@@ -457,7 +457,7 @@ namespace BookStore.DAL
 
             };
 
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 db.Forfattere.Add(nyForfatter);
@@ -472,7 +472,7 @@ namespace BookStore.DAL
 
         public List<Forfatteren> hentForfattere()
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             List<Forfatteren> alleSjangere = db.Forfattere.Select(k => new Forfatteren()
             {
                 ForfatterId = k.ForfatterId,
@@ -485,7 +485,7 @@ namespace BookStore.DAL
 
         public bool endreForfatter(int id, Forfatteren innForfatter)
         {
-            AdminContext db = new AdminContext();
+            BokerContext db = new BokerContext();
             var forfatterSomSkalEndres = db.Forfattere.FirstOrDefault(p => p.ForfatterId == innForfatter.ForfatterId);
 
             if (forfatterSomSkalEndres == null)
@@ -499,7 +499,7 @@ namespace BookStore.DAL
 
         public Forfatteren hentEnForfatter(int id)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
 
             var enDbForfatter = db.Forfattere.Find(id);
 
@@ -520,7 +520,7 @@ namespace BookStore.DAL
 
         public bool slettForfatter(int slettId)
         {
-            var db = new AdminContext();
+            var db = new BokerContext();
             try
             {
                 Forfatter slettForfatter = db.Forfattere.Find(slettId);

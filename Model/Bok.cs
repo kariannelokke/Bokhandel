@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Model
 {
+    [TrackChanges]
     public class Bok
     {
         [Key]
