@@ -15,7 +15,6 @@ namespace BookStore.Controllers
             if (Session["AdminLoggetInn"] == null)
             {
                 Session["AdminLoggetInn"] = false;
-
             }
 
             return View();
@@ -46,22 +45,27 @@ namespace BookStore.Controllers
             if (Session["AdminLoggetInn"] != null)
             {
                 bool loggetInn = (bool)Session["AdminLoggetInn"];
-                int adminID = (int)Session["AdminID"];
 
-                if (Session["AdminID"] != null)
-                {
                     if (loggetInn)
                     {
                         return View();
-                    }
-                }
+                    } 
             }
             return RedirectToAction("Index");
         }
 
         public ActionResult registrerAdmin()
         {
-            return View();
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -79,26 +83,44 @@ namespace BookStore.Controllers
             return View();
         }
 
-        public ActionResult loggUt()
+        public ActionResult loggUtadmin()
         {
-            Session["LoggetInn"] = false;
-            Session["KundeID"] = null;
-            Session["Kunde"] = null;
+            Session["AdminLoggetInn"] = false;
+            Session["AdminID"] = null;
             return View();
         }
 
         public ActionResult Liste()
         {
-            var adminDb = new AdminBLL();
-            List<Kunde> alleKunder = adminDb.hentAlle();
-            return View(alleKunder);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                    if (loggetInn)
+                    {
+                        var adminDb = new AdminBLL();
+                        List<Kunde> alleKunder = adminDb.hentAlle();
+                        return View(alleKunder);
+                    }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult EndreKunde(int id)
         {
-            var kundeDb = new AdminBLL();
-            Kunde enKunde = kundeDb.hentEnKunde(id);
-            return View(enKunde);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var kundeDb = new AdminBLL();
+                    Kunde enKunde = kundeDb.hentEnKunde(id);
+                    return View(enKunde);
+                }
+                
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -118,9 +140,18 @@ namespace BookStore.Controllers
 
         public ActionResult Slett(int id)
         {
-            var Admin = new AdminBLL();
-            Kunde enKunde = Admin.hentEnKunde(id);
-            return View(enKunde);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    Kunde enKunde = Admin.hentEnKunde(id);
+                    return View(enKunde);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -137,32 +168,67 @@ namespace BookStore.Controllers
 
         public ActionResult VisOrdre(int id)
         {
-            var Admin = new AdminBLL();
-            List<Bestilling> ordre = Admin.hentAlleOrdre(id);
-            Session["KundId"] = id;
-            return View(ordre);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    List<Bestilling> ordre = Admin.hentAlleOrdre(id);
+                    Session["KundId"] = id;
+                    return View(ordre);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult VisOrdreDetaljer(int id)
         {
-            var Admin = new AdminBLL();
-            Bestilling ordreDetaljer = Admin.hentAlleOrdreDetaljer(id);
-            return View(ordreDetaljer);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    Bestilling ordreDetaljer = Admin.hentAlleOrdreDetaljer(id);
+                    return View(ordreDetaljer);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult hentAlleBoker()
         {
-            var Admin = new AdminBLL();
-            List<Boken> boker = Admin.hentAlleBoker();
-            return View(boker);
-
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    List<Boken> boker = Admin.hentAlleBoker();
+                    return View(boker);
+                }
+             }
+        
+            return RedirectToAction("Index");
         }
 
         public ActionResult EndreBok(int id)
         {
-            var bokDb = new AdminBLL();
-            Boken enBok = bokDb.hentEnBok(id);
-            return View(enBok);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+                    
+                if (loggetInn)
+                {
+                    var bokDb = new AdminBLL();
+                    Boken enBok = bokDb.hentEnBok(id);
+                    return View(enBok);
+                }
+                
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -182,7 +248,17 @@ namespace BookStore.Controllers
 
         public ActionResult registrerBok()
         {
-            return View();
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    return View();
+                }
+                
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -202,9 +278,18 @@ namespace BookStore.Controllers
 
         public ActionResult SlettBok(int id)
         {
-            var Admin = new AdminBLL();
-            Boken enBok = Admin.hentEnBok(id);
-            return View(enBok);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                    if (loggetInn)
+                    {
+                        var Admin = new AdminBLL();
+                        Boken enBok = Admin.hentEnBok(id);
+                        return View(enBok);
+                    }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -221,7 +306,16 @@ namespace BookStore.Controllers
 
         public ActionResult registrerSjanger()
         {
-            return View();
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -241,16 +335,34 @@ namespace BookStore.Controllers
 
         public ActionResult hentSjangere()
         {
-            var adminDb = new AdminBLL();
-            List<Sjangeren> alleSjangere = adminDb.hentSjangere();
-            return View(alleSjangere);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var adminDb = new AdminBLL();
+                    List<Sjangeren> alleSjangere = adminDb.hentSjangere();
+                    return View(alleSjangere);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult EndreSjanger(int id)
         {
-            var Db = new AdminBLL();
-            Sjangeren enSjanger = Db.hentEnSjanger(id);
-            return View(enSjanger);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Db = new AdminBLL();
+                    Sjangeren enSjanger = Db.hentEnSjanger(id);
+                    return View(enSjanger);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -270,9 +382,18 @@ namespace BookStore.Controllers
 
         public ActionResult SlettSjanger(int id)
         {
-            var Admin = new AdminBLL();
-            Sjangeren enKunde = Admin.hentEnSjanger(id);
-            return View(enKunde);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    Sjangeren enKunde = Admin.hentEnSjanger(id);
+                    return View(enKunde);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -289,7 +410,16 @@ namespace BookStore.Controllers
 
         public ActionResult registrerForfatter()
         {
-            return View();
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -309,16 +439,34 @@ namespace BookStore.Controllers
 
         public ActionResult hentForfattere()
         {
-            var adminDb = new AdminBLL();
-            List<Forfatteren> alleForfattere = adminDb.hentForfattere();
-            return View(alleForfattere);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var adminDb = new AdminBLL();
+                    List<Forfatteren> alleForfattere = adminDb.hentForfattere();
+                    return View(alleForfattere);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult EndreForfatter(int id)
         {
-            var Db = new AdminBLL();
-            Forfatteren enForfatter = Db.hentEnForfatter(id);
-            return View(enForfatter);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Db = new AdminBLL();
+                    Forfatteren enForfatter = Db.hentEnForfatter(id);
+                    return View(enForfatter);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -338,9 +486,18 @@ namespace BookStore.Controllers
 
         public ActionResult SlettForfatter(int id)
         {
-            var Admin = new AdminBLL();
-            Forfatteren enForfatter = Admin.hentEnForfatter(id);
-            return View(enForfatter);
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+
+                if (loggetInn)
+                {
+                    var Admin = new AdminBLL();
+                    Forfatteren enForfatter = Admin.hentEnForfatter(id);
+                    return View(enForfatter);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
