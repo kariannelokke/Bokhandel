@@ -1237,6 +1237,82 @@ namespace Enhetstest
             Assert.AreEqual(actionResult.ViewName, "");
         }
 
+
+        [TestMethod]
+        public void adminSide_Vis_View()
+        {
+            var SessionMock = new TestControllerBuilder();
+
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+            SessionMock.InitializeController(controller);
+            controller.Session["AdminLoggetInn"] = true;
+
+            // Act
+            var actionResult = (ViewResult)controller.adminSide();
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void loggUtadmin_Vis_View()
+        {
+            var SessionMock = new TestControllerBuilder();
+
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+            SessionMock.InitializeController(controller);
+            controller.Session["AdminLoggetInn"] = false;
+
+            // Act
+            var actionResult = (ViewResult)controller.loggUtadmin();
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void Index_Vis_View()
+        {
+            var SessionMock = new TestControllerBuilder();
+
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+            SessionMock.InitializeController(controller);
+            controller.Session["AdminLoggetInn"] = false;
+
+            // Act
+            var actionResult = (ViewResult)controller.Index();
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void Index_Post_OK()
+        {
+            var SessionMock = new TestControllerBuilder();
+
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+            SessionMock.InitializeController(controller);
+            controller.Session["AdminLoggetInn"] = true;
+
+            var forventetAdmin = new Administratoren()
+            {
+                Id = 100,
+                Brukernavn = "Sofia",
+
+            };
+            // Act
+            var result = (RedirectToRouteResult)controller.Index(forventetAdmin);
+
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "adminSide");
+        }
+
     }
 }
 
