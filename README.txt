@@ -20,7 +20,7 @@ ________________________________________________________________________________
 
 OBS! Vi hadde litt trøbbel med samkjøring av databasene i mappe 1 og mappe 2.
 
-Hvis databasen er tom når du starter prosjektet må du gjøre disse stegene for å få databasene til å fungere sammen:
+Når du starter prosjektet må du gjøre disse stegene for å få databasene til å fungere sammen:
 
 - Build Solution
 
