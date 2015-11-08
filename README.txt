@@ -1,6 +1,6 @@
 ------ Read me -------
 Webapplikasjoner mappe 2 - 2015 - Karianne og Sofia
-Github: https://github.com/kariannelokke/Bokhandel
+
 --------------------------------------------------------
 Administrator
 Brukernavn: Admin
