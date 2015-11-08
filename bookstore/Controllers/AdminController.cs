@@ -67,16 +67,7 @@ namespace BookStore.Controllers
 
         public ActionResult registrerAdmin()
         {
-            if (Session["AdminLoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["AdminLoggetInn"];
-
-                if (loggetInn)
-                {
-                    return View();
-                }
-            }
-            return RedirectToAction("Index");
+            return View();
         }
 
         [HttpPost]
